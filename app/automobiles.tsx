@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, TextInput, FlatList, Image, TouchableOpacity, S
 import NoDataIllustration from "../assets/no-data.svg";
 import { Ionicons } from "@expo/vector-icons";
 import { useNavigation, useRouter } from "expo-router";
+import { defaultImage } from "../constants/assets";
 
 type CategoryKey = "Car Showroom" | "Batteries" | "Car Wash" | "Engine Services" | "Spare Parts" | "Tyres" | "Oils & Lubricants";
 
@@ -241,7 +242,7 @@ export default function AutomobilesScreen() {
         renderItem={({ item }) => (
           <TouchableOpacity activeOpacity={0.9} style={styles.card} onPress={() => router.push({ pathname: "/automobile-detail", params: { id: item.id, name: item.name, specialist: item.specialist, description: item.description, buttonType: item.buttonType } })}>
             <View style={{ position: "relative" }}>
-              <Image source={require("../assets/default.png")} style={styles.image} resizeMode="cover" />
+              <Image source={defaultImage} style={styles.image} resizeMode="cover" />
               {item.description && item.description.includes('Discount') && (
                 <View style={styles.discountRibbon}>
                   <Text style={styles.discountText}>{item.description.split(' ')[0]}</Text>

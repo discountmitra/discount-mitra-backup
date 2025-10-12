@@ -7,6 +7,7 @@ import { LinearGradient } from "expo-linear-gradient";
 import LikeButton from "../components/common/LikeButton";
 import OfferCards from "../components/common/OfferCards";
 import { categoryOffers } from "../constants/offerData";
+import { defaultImage } from "../constants/assets";
 
 export default function HomeServiceDetailScreen() {
   const params = useLocalSearchParams();
@@ -160,7 +161,7 @@ export default function HomeServiceDetailScreen() {
         {/* Hero Section with Background */}
         <View style={styles.heroSection}>
           <Image 
-            source={service.image && /^https?:\/\//.test(service.image) ? { uri: service.image } : require("../assets/default.png")} 
+            source={service.image && /^https?:\/\//.test(service.image) ? { uri: service.image } : defaultImage} 
             style={styles.heroBackgroundImage}
             resizeMode="cover"
           />

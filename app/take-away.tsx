@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, Image, TouchableOpacity, ScrollView, TextInput,
 import { Ionicons } from "@expo/vector-icons";
 import { useNavigation, useLocalSearchParams, useRouter } from "expo-router";
 import { restaurantData, Restaurant, MenuCategory } from "../constants/restaurantData";
+import { defaultImage } from "../constants/assets";
 
 export default function TakeAwayScreen() {
   const navigation = useNavigation();
@@ -372,7 +373,7 @@ export default function TakeAwayScreen() {
                 
                 return (
                   <View key={itemKey} style={styles.searchResultItem}>
-                    <Image source={require("../assets/default.png")} style={styles.searchResultImage} />
+                    <Image source={defaultImage} style={styles.searchResultImage} />
                     <View style={styles.searchResultContent}>
                       <View style={styles.searchResultHeader}>
                         <View style={[
@@ -457,7 +458,7 @@ export default function TakeAwayScreen() {
                   
                   return (
                     <View key={index} style={styles.menuItemCard}>
-                      <Image source={require("../assets/default.png")} style={styles.menuItemImage} />
+                      <Image source={defaultImage} style={styles.menuItemImage} />
                       <View style={styles.menuItemContent}>
                         <View style={styles.menuItemHeader}>
                             <View style={[

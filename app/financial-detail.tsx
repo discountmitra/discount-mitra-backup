@@ -12,6 +12,7 @@ import {
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { useLocalSearchParams, useRouter } from 'expo-router';
+import { defaultImage } from '../constants/assets';
 
 interface FinancialService {
   'Sub-Categorie': string;
@@ -268,7 +269,7 @@ export default function FinancialDetailScreen() {
       <ScrollView style={styles.content} showsVerticalScrollIndicator={false}>
         {/* Hero */}
         <View style={styles.heroCard}>
-          <Image source={require('../assets/default.png')} style={styles.heroImage} />
+          <Image source={defaultImage} style={styles.heroImage} />
           <View style={styles.heroBody}>
             <View style={styles.heroHeader}>
               <Text style={styles.serviceName}>{service.name}</Text>

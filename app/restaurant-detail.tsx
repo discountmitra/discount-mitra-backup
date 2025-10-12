@@ -5,6 +5,9 @@ import { Ionicons } from "@expo/vector-icons";
 import { useNavigation, useLocalSearchParams, useRouter } from "expo-router";
 import { restaurantData, Restaurant } from "../constants/restaurantData";
 import LikeButton from "../components/common/LikeButton";
+import { reviews } from "../constants/reviewsData";
+import { defaultGalleryImages, galleryTabs, GalleryImage } from "../constants/galleryData";
+import { defaultImage } from "../constants/assets";
 
 export default function RestaurantDetailScreen() {
   const navigation = useNavigation();
@@ -16,7 +19,7 @@ export default function RestaurantDetailScreen() {
   const [showStickyHeader, setShowStickyHeader] = useState(false);
   const [isViewerVisible, setIsViewerVisible] = useState(false);
   const [viewerStartIndex, setViewerStartIndex] = useState(0);
-  const [viewerData, setViewerData] = useState<{ id: number; url: string; category: string; caption?: string }[]>([]);
+  const [viewerData, setViewerData] = useState<GalleryImage[]>([]);
   const [currentViewerIndex, setCurrentViewerIndex] = useState(0);
   const viewerListRef = useRef<FlatList<any>>(null);
 
@@ -72,8 +75,7 @@ export default function RestaurantDetailScreen() {
     setShowStickyHeader(offsetY > 100);
   };
 
-  const galleryTabs = ['All', 'Ambience', 'Food Images', 'Food Menu'];
-  const galleryImages: { id: number; url: string; category: string; caption?: string }[] = useMemo(() => {
+  const galleryImages: GalleryImage[] = useMemo(() => {
     // Use provided gallery images for new restaurants, fallback to defaults
     if ((restaurant.id === '4' || restaurant.id === '5') && Array.isArray(restaurant.photos) && restaurant.photos.length > 0) {
       return restaurant.photos.map((url, index) => ({
@@ -84,16 +86,7 @@ export default function RestaurantDetailScreen() {
       }));
     }
 
-    return [
-      // Ambience
-      { id: 1, url: 'https://images.unsplash.com/photo-1683318528692-6cfe0ae76817?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Zm9vZCUyMGFtYmllbmNlfGVufDB8fDB8fHww', category: 'Ambience', caption: 'Warm ambience with cozy seating' },
-      { id: 2, url: 'https://images.unsplash.com/photo-1578231177134-f1bbe379b054?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDV8fHxlbnwwfHx8fHw%3D', category: 'Ambience', caption: 'Modern decor and lighting' },
-      // Food Images
-      { id: 3, url: 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8Zm9vZHxlbnwwfHwwfHx8MA%3D%3D', category: 'Food Images', caption: 'Signature dish presentation' },
-      { id: 4, url: 'https://images.unsplash.com/photo-1701579231305-d84d8af9a3fd?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YmlyeWFuaXxlbnwwfHwwfHx8MA%3D%3D', category: 'Food Images', caption: 'Delicious biryani bowl' },
-      // Food Menu
-      { id: 5, url: 'https://images.unsplash.com/photo-1515697320591-f3eb3566bc3c?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fG1lbnV8ZW58MHx8MHx8fDA%3D', category: 'Food Menu', caption: 'Restaurant menu' },
-    ];
+    return defaultGalleryImages;
   }, [restaurant.id, restaurant.photos]);
 
   const filteredImages = selectedGalleryTab === 'All' 
@@ -170,7 +163,7 @@ export default function RestaurantDetailScreen() {
         {/* Hero Section with Background */}
         <View style={styles.heroSection}>
           <Image 
-            source={headerImage && /^https?:\/\//.test(headerImage) ? { uri: headerImage } : require("../assets/default.png")} 
+            source={headerImage && /^https?:\/\//.test(headerImage) ? { uri: headerImage } : defaultImage} 
             style={styles.heroBackgroundImage}
             resizeMode="cover"
           />

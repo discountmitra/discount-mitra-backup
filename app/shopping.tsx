@@ -2,14 +2,8 @@ import { useMemo, useRef, useState } from "react";
 import { View, Text, StyleSheet, TextInput, FlatList, Image, TouchableOpacity, NativeSyntheticEvent, NativeScrollEvent } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { useNavigation, useRouter } from "expo-router";
-
-type ShoppingItem = {
-  id: string;
-  name: string;
-  specialist: string;
-  description: string;
-  image?: string;
-};
+import { shoppingData } from "../constants/shoppingData";
+import { defaultImage } from "../constants/assets";
 
 export default function ShoppingScreen() {
   const navigation = useNavigation();
@@ -18,43 +12,7 @@ export default function ShoppingScreen() {
   const [showScrollTop, setShowScrollTop] = useState(false);
   const [query, setQuery] = useState("");
 
-  const data = useMemo<ShoppingItem[]>(() => [
-    {
-      id: "vishala-shopping-mall",
-      name: "Vishala Shopping Mall",
-      specialist: "Men, Women & Kids Shopping mall",
-      description: "Normal: 5% off • VIP: 10% off (Pay ₹19 Get Discount Coupon)",
-      image: "https://plus.unsplash.com/premium_photo-1683121817275-85d1dcf9e4c4?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8c2hvcHBpbmclMjBtYWxsfGVufDB8fDB8fHww",
-    },
-    {
-      id: "cmr-shopping-mall",
-      name: "CMR Shopping Mall",
-      specialist: "Men, Women & Kids Shopping mall",
-      description: "Normal: 5% off • VIP: 10% off (Pay ₹9 Get Discount Coupon)",
-      image: "https://img.staticmb.com/mbcontent/images/crop/uploads/2024/11/cmr-shopping-mall_0_1200.jpg.webp",
-    },
-    {
-      id: "adven-mens-store",
-      name: "Adven Mens Store sircilla",
-      specialist: "Men Shopping Center",
-      description: "Normal: 7% off • VIP: 15% off (Pay ₹19 Get Discount Coupon)",
-      image: "https://images.unsplash.com/photo-1559204260-9d9f024ab30a?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8bWVucyUyMHN0b3JlfGVufDB8fDB8fHww",
-    },
-    {
-      id: "trends",
-      name: "Trends",
-      specialist: "Store",
-      description: "Normal: 3% off • VIP: 5% off (Pay ₹9 Get Discount Coupon)",
-      image: "https://www.legalmantra.net/admin/assets/upload_image/blog/Trends.jpg",
-    },
-    {
-      id: "jockey-india",
-      name: "Jockey India",
-      specialist: "https://www.jockey.in/",
-      description: "Normal: 6% off • VIP: 12% off (Pay ₹19 Get Discount Coupon)",
-      image: "https://www.infinitimall.com/wp-content/uploads/2023/09/Jockey-Malad-Infinti-Mall-1.jpg",
-    },
-  ], []);
+  const data = useMemo(() => shoppingData, []);
 
   const matchesOrdered = (q: string, ...fields: string[]) => {
     const queryStr = q.trim().toLowerCase();
@@ -112,7 +70,7 @@ export default function ShoppingScreen() {
         renderItem={({ item }) => (
           <TouchableOpacity activeOpacity={0.9} style={styles.card} onPress={() => router.push({ pathname: "/shopping-detail", params: { id: item.id } })}>
             <Image
-              source={item.image && /^https?:\/\//.test(item.image) ? { uri: item.image } : require("../assets/default.png")}
+              source={item.image && /^https?:\/\//.test(item.image) ? { uri: item.image } : defaultImage}
               style={styles.image}
               resizeMode="cover"
             />

@@ -3,6 +3,7 @@ import { Ionicons } from "@expo/vector-icons";
 import { Colors, FontSizes, Spacing } from "../theme";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { useRouter } from "expo-router";
+import { logoImage } from "../constants/assets";
 
 export default function AccountSettingsScreen() {
   const insets = useSafeAreaInsets();
@@ -91,7 +92,7 @@ export default function AccountSettingsScreen() {
 
       {/* App Information */}
       <View style={styles.appInfoContainer}>
-        <Image source={require("../assets/logo.png")} style={styles.logo} />
+        <Image source={logoImage} style={styles.logo} />
         <Text style={styles.appVersion}>Discount Mithra v2.1.0</Text>
         <View style={styles.legalLinks}>
           <TouchableOpacity>

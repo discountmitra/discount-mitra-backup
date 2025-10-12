@@ -10,6 +10,7 @@ import { useEffect } from "react";
 import CustomTopBar from "@/components/home/CustomTopBar";
 import { Ionicons } from "@expo/vector-icons";
 import { useVip } from "../../contexts/VipContext";
+import { vipBannerImage } from "../../constants/assets";
 
 export default function HomeScreen() {
   const navigation = useNavigation();
@@ -44,7 +45,7 @@ export default function HomeScreen() {
         <View style={styles.upgradeSection}>
           <TouchableOpacity activeOpacity={0.9} onPress={() => router.push('/vip-subscription')}> 
             <Image
-              source={require('../../assets/vip-banner.png')}
+              source={vipBannerImage}
               style={styles.bannerImage}
               resizeMode="cover"
             />

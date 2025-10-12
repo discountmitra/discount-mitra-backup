@@ -5,7 +5,8 @@ import { useLocalSearchParams, useRouter, useNavigation } from "expo-router";
 import LikeButton from "../components/common/LikeButton";
 import OfferCards from "../components/common/OfferCards";
 import { categoryOffers } from "../constants/offerData";
-import { salonServices, SalonLocation } from "./beauty-salon";
+import { salonServices, SalonLocation } from "../constants/salonData";
+import { defaultImage } from "../constants/assets";
 
 type UserType = 'normal' | 'vip';
 
@@ -273,7 +274,7 @@ export default function SalonDetailScreen() {
         {/* Hero Section with Background */}
         <View style={styles.heroSection}>
           <Image 
-            source={salon.image && /^https?:\/\//.test(salon.image) ? { uri: salon.image } : require("../assets/default.png")} 
+            source={salon.image && /^https?:\/\//.test(salon.image) ? { uri: salon.image } : defaultImage} 
             style={styles.heroBackgroundImage}
             resizeMode="cover"
           />

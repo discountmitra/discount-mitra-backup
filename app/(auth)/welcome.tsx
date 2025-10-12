@@ -2,6 +2,7 @@ import { View, Text, Image, StyleSheet, Animated, Dimensions } from "react-nativ
 import { useRouter } from "expo-router";
 import { useEffect, useRef } from "react";
 import { useAuth } from "../../contexts/AuthContext";
+import { logoImage } from "../../constants/assets";
 
 const { width, height } = Dimensions.get("window");
 
@@ -133,7 +134,7 @@ export default function WelcomeScreen() {
             ]}
           >
             <Image
-              source={require("../../assets/logo.png")}
+              source={logoImage}
               style={styles.logo}
               resizeMode="contain"
             />

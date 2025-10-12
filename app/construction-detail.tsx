@@ -7,6 +7,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 import LikeButton from '../components/common/LikeButton';
 import OfferCards from '../components/common/OfferCards';
 import { categoryOffers } from '../constants/offerData';
+import { defaultImage } from '../constants/assets';
 
 type ConstructionData = {
   category: string;
@@ -184,7 +185,7 @@ export default function ConstructionDetailScreen() {
       <ScrollView style={styles.scrollView} onScroll={onScroll} scrollEventThrottle={16} showsVerticalScrollIndicator={false}>
         <View style={styles.heroSection}>
           <Image
-            source={displayImage && /^https?:\/\//.test(displayImage) ? { uri: displayImage } : require('../assets/default.png')}
+            source={displayImage && /^https?:\/\//.test(displayImage) ? { uri: displayImage } : defaultImage}
             style={styles.heroBackgroundImage}
             resizeMode="cover"
           />

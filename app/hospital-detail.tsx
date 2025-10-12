@@ -14,6 +14,7 @@ import {
 import { Ionicons } from "@expo/vector-icons";
 import { useLocalSearchParams, useRouter, useNavigation } from "expo-router";
 import { getHospitalById } from "../constants/hospitalData";
+import { defaultImage } from "../constants/assets";
 import { useState, useMemo, useRef, useEffect } from "react";
 import { useVip } from "../contexts/VipContext";
 import LikeButton from "../components/common/LikeButton";
@@ -313,7 +314,7 @@ export default function HospitalDetailScreen() {
         {/* Hero Section with Background */}
         <View style={styles.heroSection}>
           <Image 
-            source={displayImage && /^https?:\/\//.test(displayImage) ? { uri: displayImage } : require("../assets/default.png")} 
+            source={displayImage && /^https?:\/\//.test(displayImage) ? { uri: displayImage } : defaultImage} 
             style={styles.heroBackgroundImage}
             resizeMode="cover"
           />

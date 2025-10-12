@@ -5,6 +5,7 @@ import { Ionicons } from "@expo/vector-icons";
 import { useNavigation, useRouter } from "expo-router";
 import { restaurantData, Restaurant } from "../constants/restaurantData";
 import LikeButton from "@/components/common/LikeButton";
+import { defaultImage } from "../constants/assets";
 
 
 export default function FoodScreen() {
@@ -96,7 +97,7 @@ export default function FoodScreen() {
                 source={
                   item.image && /^https?:\/\//.test(item.image)
                     ? { uri: item.image }
-                    : require("../assets/default.png")
+                    : defaultImage
                 }
                 style={styles.image}
                 resizeMode="cover"

@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, TextInput, FlatList, Image, TouchableOpacity, S
 import NoDataIllustration from "../assets/no-data.svg";
 import { Ionicons } from "@expo/vector-icons";
 import { useNavigation } from "expo-router";
+import { defaultImage } from "../constants/assets";
 
 type CategoryKey = "Schools & Colleges" | "Coaching & Tuition" | "Career Guidance" | "Extracurricular Activities";
 
@@ -379,7 +380,7 @@ export default function EducationScreen() {
         renderItem={({ item }) => (
           <TouchableOpacity activeOpacity={0.9} style={styles.card}>
             <View style={{ position: "relative" }}>
-              <Image source={require("../assets/default.png")} style={styles.image} resizeMode="cover" />
+              <Image source={defaultImage} style={styles.image} resizeMode="cover" />
               {item.offers && (
                 <View style={styles.discountRibbon}>
                   <Text style={styles.discountText}>{item.offers}</Text>

@@ -6,6 +6,7 @@ import { useLocalSearchParams, useNavigation, useRouter } from "expo-router";
 import LikeButton from "../components/common/LikeButton";
 import { useVip } from "../contexts/VipContext";
 import PayBillCard from "../components/common/PayBillCard";
+import { defaultImage } from "../constants/assets";
 
 type Item = {
   id: string;
@@ -145,7 +146,7 @@ export default function ShoppingDetailScreen() {
       }} scrollEventThrottle={16}>
         {/* Hero Section with overlay and actions (aligned with other detail pages) */}
         <View style={styles.hero}>
-          <Image source={item.image && /^https?:\/\//.test(item.image) ? { uri: item.image } : require("../assets/default.png")} style={styles.heroImage} />
+          <Image source={item.image && /^https?:\/\//.test(item.image) ? { uri: item.image } : defaultImage} style={styles.heroImage} />
           <View style={styles.heroOverlay} />
           <View style={styles.heroTop}>
             <TouchableOpacity onPress={() => navigation.goBack()} style={styles.heroBack}>

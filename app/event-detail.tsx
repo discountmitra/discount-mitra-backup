@@ -11,6 +11,8 @@ import {
   ActivityIndicator,
   FlatList,
   Dimensions,
+  Animated,
+  TouchableWithoutFeedback,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
@@ -18,7 +20,9 @@ import { useLocalSearchParams, useRouter, useNavigation } from 'expo-router';
 import { useVip } from '../contexts/VipContext';
 import LikeButton from '../components/common/LikeButton';
 import OfferCards from '../components/common/OfferCards';
+import { defaultImage } from '../constants/assets';
 import { categoryOffers } from '../constants/offerData';
+import { LinearGradient } from 'expo-linear-gradient';
 
 type UserType = 'normal' | 'vip';
 
@@ -67,6 +71,8 @@ export default function EventDetailScreen() {
   const [activeGalleryIndex, setActiveGalleryIndex] = useState(0);
   const [viewerData, setViewerData] = useState<{ id: number; url: string }[]>([]);
   const viewerListRef = useRef<FlatList<any>>(null);
+  const [showPaymentPopup, setShowPaymentPopup] = useState(false);
+  const [popupAnim] = useState(new Animated.Value(0));
 
   const faqData = [
     {
@@ -286,7 +292,39 @@ export default function EventDetailScreen() {
     if (isInfra && !selectedServiceName.trim()) newErrors.service = 'Please select a service';
     setErrors(newErrors);
     if (Object.keys(newErrors).length > 0) return;
+
+    // Show payment popup for normal users, confirmation modal for VIP users
+    if (userMode === 'normal') {
+      setShowPaymentPopup(true);
+      Animated.spring(popupAnim, {
+        toValue: 1,
+        useNativeDriver: true,
+        tension: 100,
+        friction: 8,
+      }).start();
+    } else {
+      setShowConfirmModal(true);
+    }
+  };
+
+  const handleClosePaymentPopup = () => {
+    Animated.timing(popupAnim, {
+      toValue: 0,
+      duration: 200,
+      useNativeDriver: true,
+    }).start(() => {
+      setShowPaymentPopup(false);
+    });
+  };
+
+  const handleContinueWithPayment = () => {
+    handleClosePaymentPopup();
     setShowConfirmModal(true);
+  };
+
+  const handleUpgradeToVip = () => {
+    handleClosePaymentPopup();
+    router.push('/vip-subscription');
   };
   const confirmBooking = () => {
     setShowConfirmModal(false);
@@ -514,7 +552,7 @@ export default function EventDetailScreen() {
         {/* Hero Section with Background */}
         <View style={styles.heroSection}>
           <Image 
-            source={headerImage && /^https?:\/\//.test(headerImage) ? { uri: headerImage } : require('../assets/default.png')} 
+            source={headerImage && /^https?:\/\//.test(headerImage) ? { uri: headerImage } : defaultImage} 
             style={styles.heroBackgroundImage}
             resizeMode="cover"
           />
@@ -837,6 +875,90 @@ export default function EventDetailScreen() {
         <View style={{ height: 24 }} />
         </View>
       </ScrollView>
+
+      {/* Payment Popup for Normal Users */}
+      {showPaymentPopup && (
+        <View style={styles.paymentPopupOverlay}>
+          <TouchableWithoutFeedback onPress={handleClosePaymentPopup}>
+            <View style={StyleSheet.absoluteFill} />
+          </TouchableWithoutFeedback>
+          <Animated.View 
+            style={[
+              styles.paymentPopupContainer,
+              {
+                transform: [
+                  {
+                    scale: popupAnim.interpolate({
+                      inputRange: [0, 1],
+                      outputRange: [0.8, 1],
+                    }),
+                  },
+                ],
+                opacity: popupAnim,
+              },
+            ]}
+          >
+            <View style={styles.paymentPopupHeader}>
+              <TouchableOpacity
+                style={styles.paymentPopupCloseButton}
+                onPress={handleClosePaymentPopup}
+                activeOpacity={0.7}
+              >
+                <Ionicons name="close" size={24} color="#6b7280" />
+              </TouchableOpacity>
+              <Ionicons name="card" size={32} color="#3b82f6" />
+              <Text style={styles.paymentPopupTitle}>Payment Required</Text>
+              <Text style={styles.paymentPopupSubtitle}>
+                Choose your payment option for booking
+              </Text>
+            </View>
+
+            <View style={styles.paymentPopupContent}>
+              <View style={styles.paymentOptionCard}>
+                <View style={styles.paymentOptionHeader}>
+                  <Ionicons name="card" size={20} color="#3b82f6" />
+                  <Text style={styles.paymentOptionTitle}>Pay ₹9 & Book</Text>
+                </View>
+                <Text style={styles.paymentOptionDescription}>
+                  Pay ₹9 to proceed with your booking request
+                </Text>
+              </View>
+
+              <View style={styles.paymentOptionCard}>
+                <View style={styles.paymentOptionHeader}>
+                  <Ionicons name="star" size={20} color="#f59e0b" />
+                  <Text style={styles.paymentOptionTitle}>Upgrade to VIP</Text>
+                </View>
+                <Text style={styles.paymentOptionDescription}>
+                  Get free bookings and exclusive discounts
+                </Text>
+              </View>
+            </View>
+
+            <View style={styles.paymentPopupActions}>
+              <TouchableOpacity 
+                style={styles.paymentContinueButton}
+                onPress={handleContinueWithPayment}
+              >
+                <Text style={styles.paymentContinueText}>Continue with ₹9</Text>
+              </TouchableOpacity>
+              
+              <TouchableOpacity 
+                style={styles.paymentUpgradeButton}
+                onPress={handleUpgradeToVip}
+              >
+                <LinearGradient
+                  colors={['#f59e0b', '#d97706']}
+                  style={styles.paymentUpgradeGradient}
+                >
+                  <Ionicons name="star" size={18} color="#ffffff" />
+                  <Text style={styles.paymentUpgradeText}>Upgrade to VIP</Text>
+                </LinearGradient>
+              </TouchableOpacity>
+            </View>
+          </Animated.View>
+        </View>
+      )}
 
       {/* Confirmation Modal */}
       <Modal visible={showConfirmModal} transparent animationType="fade" onRequestClose={() => setShowConfirmModal(false)}>
@@ -1384,4 +1506,115 @@ const styles = StyleSheet.create({
   viewerImage: { width: '100%', height: '100%' },
   viewerCaptionWrap: { position: 'absolute', left: 0, right: 0, bottom: 24, alignItems: 'center' },
   viewerCaption: { color: '#e5e7eb', fontSize: 12 },
+  
+  // Payment Popup Styles
+  paymentPopupOverlay: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    justifyContent: 'center',
+    alignItems: 'center',
+    zIndex: 1000,
+  },
+  paymentPopupContainer: {
+    backgroundColor: '#ffffff',
+    borderRadius: 20,
+    padding: 24,
+    width: '90%',
+    maxWidth: 400,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 10 },
+    shadowOpacity: 0.25,
+    shadowRadius: 20,
+    elevation: 10,
+  },
+  paymentPopupHeader: {
+    alignItems: 'center',
+    marginBottom: 24,
+  },
+  paymentPopupCloseButton: {
+    position: 'absolute',
+    top: -8,
+    right: -8,
+    width: 32,
+    height: 32,
+    borderRadius: 16,
+    backgroundColor: '#f3f4f6',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  paymentPopupTitle: {
+    fontSize: 20,
+    fontWeight: '700',
+    color: '#111827',
+    marginTop: 12,
+    marginBottom: 8,
+  },
+  paymentPopupSubtitle: {
+    fontSize: 14,
+    color: '#6b7280',
+    textAlign: 'center',
+    lineHeight: 20,
+  },
+  paymentPopupContent: {
+    marginBottom: 24,
+  },
+  paymentOptionCard: {
+    backgroundColor: '#f8fafc',
+    borderRadius: 12,
+    padding: 16,
+    marginBottom: 12,
+    borderWidth: 1,
+    borderColor: '#e5e7eb',
+  },
+  paymentOptionHeader: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 8,
+  },
+  paymentOptionTitle: {
+    fontSize: 16,
+    fontWeight: '600',
+    color: '#111827',
+    marginLeft: 8,
+  },
+  paymentOptionDescription: {
+    fontSize: 14,
+    color: '#6b7280',
+    lineHeight: 18,
+  },
+  paymentPopupActions: {
+    gap: 12,
+  },
+  paymentContinueButton: {
+    backgroundColor: '#3b82f6',
+    borderRadius: 12,
+    paddingVertical: 16,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  paymentContinueText: {
+    fontSize: 16,
+    fontWeight: '700',
+    color: '#ffffff',
+  },
+  paymentUpgradeButton: {
+    borderRadius: 12,
+    overflow: 'hidden',
+  },
+  paymentUpgradeGradient: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingVertical: 16,
+    gap: 8,
+  },
+  paymentUpgradeText: {
+    fontSize: 16,
+    fontWeight: '700',
+    color: '#ffffff',
+  },
 });

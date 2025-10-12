@@ -7,25 +7,7 @@ import { Ionicons } from "@expo/vector-icons";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { LinearGradient } from 'expo-linear-gradient';
 import { useVip } from "../../contexts/VipContext";
-
-const categories = [
-  // Primary order
-  { id: "1", title: "Food", subtitle: "Restaurants & Takeaway", icon: "fast-food", color: "#FF6B6B" },
-  { id: "2", title: "Healthcare", subtitle: "Hospitals & Clinics", icon: "medkit", color: "#4ECDC4" },
-  { id: "4", title: "Home Services", subtitle: "Repair & Maintenance", icon: "build", color: "#FFA502" },
-  { id: "8", title: "Events", subtitle: "Event Management", icon: "calendar", color: "#27AE60" },
-  { id: "12", title: "Shopping", subtitle: "Malls & Fashion", icon: "shirt", color: "#7c3aed" },
-  { id: "13", title: "Construction", subtitle: "Building & Materials", icon: "construct", color: "#EAB308" },
-  { id: "6", title: "Beauty & Salon", subtitle: "Hair & Beauty Care", icon: "color-palette", color: "#B53471" },
-  { id: "14", title: "Others", subtitle: "Custom Service Requests", icon: "add-circle", color: "#6B46C1" },
-  // The rest
-  { id: "3", title: "Travel", subtitle: "Hotels & Booking", icon: "airplane", color: "#45B7D1", comingSoon: true },
-  { id: "5", title: "Automobiles", subtitle: "Car & Bike Services", icon: "car-sport", color: "#3742FA", comingSoon: true },
-  { id: "7", title: "Bar", subtitle: "Drinks & Nightlife", icon: "wine", color: "#8E44AD", comingSoon: true },
-  { id: "9", title: "Financial Services", subtitle: "Banking & Insurance", icon: "cash", color: "#16A085", comingSoon: true },
-  { id: "10", title: "Education", subtitle: "Schools & Coaching", icon: "school", color: "#E67E22", comingSoon: true },
-  { id: "11", title: "Electronics", subtitle: "Tech & Gadgets", icon: "phone-portrait", color: "#2C3E50", comingSoon: true },
-];
+import { categories } from "../../constants/categoriesData";
 
 
 export default function CategoriesScreen() {

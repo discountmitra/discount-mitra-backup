@@ -2,6 +2,7 @@ import { useMemo, useState } from "react";
 import { View, Text, StyleSheet, TouchableOpacity, ScrollView, Image, TextInput, Modal, ActivityIndicator } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { useLocalSearchParams, useRouter } from "expo-router";
+import { defaultImage } from "../constants/assets";
 
 export default function AutomobileDetailScreen() {
   const params = useLocalSearchParams();
@@ -177,7 +178,7 @@ export default function AutomobileDetailScreen() {
       <ScrollView style={styles.content} showsVerticalScrollIndicator={false}>
         {/* Hero */}
         <View style={styles.heroCard}>
-          <Image source={require("../assets/default.png")} style={styles.heroImage} />
+          <Image source={defaultImage} style={styles.heroImage} />
           <View style={styles.heroBody}>
             <View style={styles.heroHeader}>
               <Text style={styles.serviceName}>{service.name}</Text>

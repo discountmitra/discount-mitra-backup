@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, TextInput, FlatList, Image, TouchableOpacity, S
 import NoDataIllustration from "../assets/no-data.svg";
 import { Ionicons } from "@expo/vector-icons";
 import { useNavigation, router } from "expo-router";
+import { defaultImage } from "../constants/assets";
 
 type CategoryKey = "Banking" | "Insurance - Policy" | "Tax & Compliance";
 
@@ -331,7 +332,7 @@ export default function FinancialServicesScreen() {
             }}
           >
             <View style={{ position: "relative" }}>
-              <Image source={require("../assets/default.png")} style={styles.image} resizeMode="cover" />
+              <Image source={defaultImage} style={styles.image} resizeMode="cover" />
               {item.offers && (
                 <View style={styles.discountRibbon}>
                   <Text style={styles.discountText}>{item.offers}</Text>

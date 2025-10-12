@@ -5,42 +5,20 @@ import { Ionicons } from "@expo/vector-icons";
 import { useNavigation, router, useLocalSearchParams } from "expo-router";
 import { useEffect } from "react";
 import LikeButton from "../components/common/LikeButton";
-
-type CategoryKey = "Repairs & Maintenance" | "Cleaning & Pest Control" | "Security & Surveillance";
-
-type Service = {
-  id: string;
-  name: string;
-  description: string;
-  category: CategoryKey;
-  icon: keyof typeof Ionicons.glyphMap;
-  price: string;
-  discount: string;
-  rating: number;
-  reviews: number;
-  availability: string;
-  image?: string;
-  normalUserOffer?: string;
-  vipUserOffer?: string;
-};
+import { homeServicesData, homeServiceCategories, HomeServiceCategoryKey } from "../constants/homeServicesData";
+import { defaultImage } from "../constants/assets";
 
 export default function HomeServicesScreen() {
   const navigation = useNavigation();
   const params = useLocalSearchParams();
   const listRef = useRef<FlatList<any>>(null);
   const [showScrollTop, setShowScrollTop] = useState(false);
-  const [selectedCategory, setSelectedCategory] = useState<CategoryKey>("Repairs & Maintenance");
+  const [selectedCategory, setSelectedCategory] = useState<HomeServiceCategoryKey>("Repairs & Maintenance");
   const [query, setQuery] = useState("");
-
-  const categories: CategoryKey[] = [
-    "Repairs & Maintenance",
-    "Cleaning & Pest Control",
-    "Security & Surveillance",
-  ];
 
   useEffect(() => {
     const pre = params.preselect as string | undefined;
-    if (pre && categories.includes(pre as any)) {
+    if (pre && homeServiceCategories.includes(pre as any)) {
       setSelectedCategory(pre as any);
     }
   }, [params.preselect]);
@@ -285,7 +263,7 @@ export default function HomeServicesScreen() {
                 source={
                   item.image && /^https?:\/\//.test(item.image)
                     ? { uri: item.image }
-                    : require("../assets/default.png")
+                    : defaultImage
                 }
                 style={styles.image}
                 resizeMode="cover"
