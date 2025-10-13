@@ -22,6 +22,7 @@ import LikeButton from '../components/common/LikeButton';
 import OfferCards from '../components/common/OfferCards';
 import { defaultImage } from '../constants/assets';
 import { categoryOffers } from '../constants/offerData';
+import { eventData as eventServices } from '../constants/eventsData';
 import { LinearGradient } from 'expo-linear-gradient';
 
 type UserType = 'normal' | 'vip';
@@ -89,188 +90,16 @@ export default function EventDetailScreen() {
     }
   ];
 
-  const eventData: EventData[] = [
-    {
-      "Category": "Events",
-      "Sub-Category": "Decoration",
-      "Name": "Birthday Decoration",
-      "description": "We offer birthday decoration services for all age groups at affordable prices, starting from ₹1999. Get up to 25% discount on your special day!",
-      "NORMAL USER": "10% DISCOUNT",
-      "VIP USER": "GET UPTO 25% DISCOUNT",
-      "Button": "Request Now",
-      "reaction": "Thanks for booking! Our team will contact you in 10 mins"
-    },
-    {
-      "Category": "Events",
-      "Sub-Category": "Decoration",
-      "Name": "Haldi Decoration",
-      "description": "Celebrate with Elegance! Custom decorations for your special day. We offer elegant haldi ceremony decorations at affordable prices.",
-      "NORMAL USER": "10% DISCOUNT",
-      "VIP USER": "GET UPTO 25% DISCOUNT",
-      "Button": "Request Now",
-      "reaction": "Thanks for booking! Our team will contact you in 10 mins"
-    },
-    {
-      "Category": "Events",
-      "Sub-Category": "Decoration",
-      "Name": "Wedding Decoration",
-      "description": "We offer wedding decoration services for all types of weddings at affordable prices, starting from ₹9999. Get up to 25% discount on your special day!",
-      "NORMAL USER": "10% DISCOUNT",
-      "VIP USER": "GET UPTO 25% DISCOUNT",
-      "Button": "Request Now",
-      "reaction": "Thanks for booking! Our team will contact you in 10 mins"
-    },
-    {
-      "Category": "Events",
-      "Sub-Category": "Decoration",
-      "Name": "Reception Decoration",
-      "description": "Customized reception themes for all budgets. We offer elegant reception setups starting from ₹5999.",
-      "NORMAL USER": "10% DISCOUNT",
-      "VIP USER": "GET UPTO 25% DISCOUNT",
-      "Button": "Request Now",
-      "reaction": "Thanks for booking! Our team will contact you in 10 mins"
-    },
-    {
-      "Category": "Events",
-      "Sub-Category": "Decoration",
-      "Name": "Premium Decorations",
-      "description": "Premium Decorations at Budget-Friendly Prices. Elegant premium setups with guaranteed lowest price.",
-      "NORMAL USER": "10% DISCOUNT",
-      "VIP USER": "GET UPTO 25% DISCOUNT",
-      "Button": "Request Now",
-      "reaction": "Thanks for booking! Our team will contact you in 10 mins"
-    },
-    {
-      "Category": "Events",
-      "Sub-Category": "Tent House",
-      "Name": "Tent House Services",
-      "description": "Complete tent setup for all your outdoor events. Professional tent house services with lowest price guarantee.",
-      "NORMAL USER": "10% DISCOUNT",
-      "VIP USER": "GET UPTO 25% DISCOUNT",
-      "Button": "Request Now",
-      "reaction": "Thanks for booking! Our team will contact you in 10 mins"
-    },
-    {
-      "Category": "Events",
-      "Sub-Category": "DJ & Lighting",
-      "Name": "DJ Services",
-      "description": "Premium Sound Systems at Budget-Friendly Prices. Professional DJ with latest equipment starting from ₹2999.",
-      "NORMAL USER": "10% DISCOUNT",
-      "VIP USER": "GET UPTO 25% DISCOUNT",
-      "Button": "Request Now",
-      "reaction": "Thanks for booking! Our team will contact you in 10 mins"
-    },
-    {
-      "Category": "Events",
-      "Sub-Category": "DJ & Lighting",
-      "Name": "Lighting Services",
-      "description": "LED lights for Home & Street events. Professional lighting solutions starting from ₹999.",
-      "NORMAL USER": "10% DISCOUNT",
-      "VIP USER": "GET UPTO 25% DISCOUNT",
-      "Button": "Request Now",
-      "reaction": "Thanks for booking! Our team will contact you in 10 mins"
-    },
-    {
-      "Category": "Events",
-      "Sub-Category": "Thadakala Pandiri",
-      "Name": "Thadakala Pandiri",
-      "description": "Traditional Pandiri Setup for Weddings. Authentic traditional setup with budget friendly & lowest price guarantee.",
-      "NORMAL USER": "10% DISCOUNT",
-      "VIP USER": "GET UPTO 25% DISCOUNT",
-      "Button": "Request Now",
-      "reaction": "Thanks for booking! Our team will contact you in 10 mins"
-    },
-    {
-      "Category": "Events",
-      "Sub-Category": "Function Halls",
-      "Name": "VASAVI Kalyana Mandapam (A/C)",
-      "description": "Weddings, Functions & Meetings\nCapacity: 400–600 People\nAddress: Gandhi Nagar, Sircilla\nBudget-Friendly Prices Starting at just ₹29,999/-\n\nమీ డేట్ కి హాల్ అందుబాటులో ఉందో లేదో తెలుసుకోవడానికి Book Now నొక్కండి.\n\nPrices may vary depending on the dates, but don't worry – we promise you the Lowest Price Guarantee!",
-      "NORMAL USER": "10% DISCOUNT",
-      "VIP USER": "GET UPTO 25% DISCOUNT",
-      "Button": "Request Now",
-      "reaction": "Thanks for booking! Our team will contact you in 10 mins"
-    },
-    {
-      "Category": "Events",
-      "Sub-Category": "Function Halls",
-      "Name": "Padmashali Kalyana Mandapam",
-      "description": "Weddings, Functions & Meetings\nCapacity: 400–600 People\nAddress: Gandhi Nagar, Sircilla\nStarting at ₹29,999",
-      "NORMAL USER": "10% DISCOUNT",
-      "VIP USER": "GET UPTO 25% DISCOUNT",
-      "Button": "Request Now",
-      "reaction": "Thanks for booking! Our team will contact you in 10 mins"
-    },
-    {
-      "Category": "Events",
-      "Sub-Category": "Function Halls",
-      "Name": "Sai Manikanta Gardens (A/C)",
-      "description": "Weddings, Functions & Meetings\nCapacity: 1000-1500 People\nAddress: Ragudu, Karimnagar Road, Sircilla\nContact for Quote",
-      "NORMAL USER": "10% DISCOUNT",
-      "VIP USER": "GET UPTO 25% DISCOUNT",
-      "Button": "Request Now",
-      "reaction": "Thanks for booking! Our team will contact you in 10 mins"
-    },
-    {
-      "Category": "Events",
-      "Sub-Category": "Function Halls",
-      "Name": "Lahari Grand Function Hall",
-      "description": "Weddings, Functions & Meetings\nCapacity: 800-1000 People\nAddress: Siddipet Road, Sircilla\nContact for Quote",
-      "NORMAL USER": "10% DISCOUNT",
-      "VIP USER": "GET UPTO 25% DISCOUNT",
-      "Button": "Request Now",
-      "reaction": "Thanks for booking! Our team will contact you in 10 mins"
-    },
-    {
-      "Category": "Events",
-      "Sub-Category": "Function Halls",
-      "Name": "K Convention Hall",
-      "description": "Weddings, Functions & Meetings\nCapacity: 800-1000 People\nAddress: Bypass Road, Sircilla\nContact for Quote",
-      "NORMAL USER": "10% DISCOUNT",
-      "VIP USER": "GET UPTO 25% DISCOUNT",
-      "Button": "Request Now",
-      "reaction": "Thanks for booking! Our team will contact you in 10 mins"
-    },
-    {
-      "Category": "Events",
-      "Sub-Category": "Function Halls",
-      "Name": "Maanya A/C Banquet Hall",
-      "description": "Weddings, Functions & Meetings\nCapacity: 800-1000 People\nAddress: Goldsmith Street, Main Bazar, Sircilla\nContact for Quote",
-      "NORMAL USER": "10% DISCOUNT",
-      "VIP USER": "GET UPTO 25% DISCOUNT",
-      "Button": "Request Now",
-      "reaction": "Thanks for booking! Our team will contact you in 10 mins"
-    },
-    {
-      "Category": "Events",
-      "Sub-Category": "Catering",
-      "Name": "Vinayaka Catering",
-      "description": "We offer catering services for weddings and functions at affordable prices, starting from ₹99 per person for a minimum of 200 guests. Both vegetarian and non-vegetarian menus are available, with trained staff support.",
-      "NORMAL USER": "10% DISCOUNT",
-      "VIP USER": "GET UPTO 25% DISCOUNT",
-      "Button": "Request Now",
-      "reaction": "Thanks for booking! Our team will contact you in 10 mins"
-    },
-    {
-      "Category": "Events",
-      "Sub-Category": "Catering",
-      "Name": "Catering Staff Service",
-      "description": "Trained serving staff for weddings & functions. 30% lower than market rates starting from ₹499 per person.",
-      "NORMAL USER": "10% DISCOUNT",
-      "VIP USER": "GET UPTO 25% DISCOUNT",
-      "Button": "Request Now",
-      "reaction": "Thanks for booking! Our team will contact you in 10 mins"
-    },
-    {
-      "Category": "Events",
-      "Sub-Category": "Mehendi Art",
-      "Name": "Mehendi Art",
-      "description": "We offer mehendi art services for weddings and functions in affordable prices, starting from ₹299 for a basic design. Our professional mehendi artists will add a touch of elegance to your special day. Book now and get up to 25% discount!",
-      "NORMAL USER": "10% DISCOUNT",
-      "VIP USER": "GET UPTO 25% DISCOUNT",
-      "Button": "Request Now",
-      "reaction": "thanks for booking! Our team will contact you in 10 mins"
-    }
-  ];
+  const eventData: EventData[] = eventServices.map(s => ({
+    Category: 'Events',
+    'Sub-Category': s.category,
+    Name: s.name,
+    description: s.description,
+    'NORMAL USER': s.normalUserOffer || '10% DISCOUNT',
+    'VIP USER': s.vipUserOffer || 'GET UPTO 25% DISCOUNT',
+    Button: 'Request Now',
+    reaction: 'Thanks for booking! Our team will contact you in 10 mins',
+  }));
 
   // Find the specific event data (fallback to first item if not found)
   const currentEvent = eventData.find(event => {

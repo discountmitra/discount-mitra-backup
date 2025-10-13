@@ -7,6 +7,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 import LikeButton from '../components/common/LikeButton';
 import OfferCards from '../components/common/OfferCards';
 import { categoryOffers } from '../constants/offerData';
+import { constructionData as constructionItems } from '../constants/constructionData';
 import { defaultImage } from '../constants/assets';
 
 type ConstructionData = {
@@ -66,26 +67,18 @@ export default function ConstructionDetailScreen() {
     setShowStickyHeader(y > 100);
   };
 
-  // Minimal dataset mirroring list screen; keys must match slugs from construction.tsx
-  const items: ConstructionData[] = [
-    { category: 'Cement', name: 'Ultratech Cement', description: 'Ultratech Cement, Ultratech Cement Super', price: undefined, details: undefined, rating: 4.8, reviews: 1200, availability: 'Available Now', image: 'https://ocvlqfitgajfyfgwtrar.supabase.co/storage/v1/object/public/dm-images/construction/ultratech-cement/2.png' },
-    { category: 'Cement', name: 'Birla Cement', description: 'MP Birla Cement', rating: 4.6, reviews: 820, availability: 'Available Now' },
-    { category: 'Cement', name: 'Ambuja Cement', description: 'Ambuja Cement, Ambuja Plus, Ambuja Kawachi', rating: 4.7, reviews: 930, availability: 'Available Now' },
-    { category: 'Cement', name: 'Bangur Cement', description: 'Bangur Cement', rating: 4.5, reviews: 640, availability: 'Available Now' },
-    { category: 'Steel', name: 'PSK Steel', description: 'PSK TTM 600+ SD', rating: 4.7, reviews: 710, availability: 'Available Now' },
-    { category: 'Steel', name: 'Jindal Steel', description: 'Jindal Steel, Jindal Pantha', rating: 4.6, reviews: 980, availability: 'Available Now' },
-    { category: 'Steel', name: 'TATA Steel', description: 'TATA Steel', rating: 4.6, reviews: 860, availability: 'Available Now' },
-    { category: 'Bricks', name: 'Red Bricks', description: 'Top Quality Red Bricks', rating: 4.7, reviews: 540, availability: 'Available Now' },
-    { category: 'Bricks', name: 'Cement Bricks', description: 'All Sizes', rating: 4.6, reviews: 420, availability: 'Available Now' },
-    { category: 'Paints', name: 'Asian Paints', description: 'All Ranges (1ltr to 20ltrs)', rating: 4.8, reviews: 1120, availability: 'Available Now' },
-    { category: 'Paints', name: 'Nerolac Paints', description: 'All Ranges (1ltr to 20ltrs)', rating: 4.7, reviews: 760, availability: 'Available Now' },
-    { category: 'Paints', name: 'Berger Paints', description: 'All Ranges (1ltr to 20ltrs)', rating: 4.6, reviews: 690, availability: 'Available Now' },
-    { category: 'RMC', name: 'Ready Mix Concrete – Any Time', description: 'Professional concrete delivery service', rating: 4.8, reviews: 880, availability: 'Available Now' },
-    { category: 'Tiles & Marbles', name: 'Tiles', description: 'All Types', rating: 4.6, reviews: 730, availability: 'Available Now' },
-    { category: 'Tiles & Marbles', name: 'Marbles', description: 'All Types', rating: 4.6, reviews: 730, availability: 'Available Now' },
-    { category: 'Interior Services', name: 'Interior Design', description: 'Top Brands (Ashirvad, Prince, Kisan, Supreme & More)', rating: 4.7, reviews: 780, availability: 'Available Now' },
-    { category: 'Machinery', name: 'JCB', description: 'On time & professional drivers', rating: 4.8, reviews: 820, availability: 'Available Now' },
-  ];
+  // Use centralized construction items; keep slug mapping logic
+  const items: ConstructionData[] = constructionItems.map(it => ({
+    category: it.category,
+    name: it.name,
+    description: it.description,
+    price: it.price,
+    details: it.details,
+    rating: it.rating,
+    reviews: it.reviews,
+    availability: it.availability,
+    image: it.image,
+  }));
 
   // Function to convert individual offers to array format
   const convertOffersToArray = (offerText: string) => {
