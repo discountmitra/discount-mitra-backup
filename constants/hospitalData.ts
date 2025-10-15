@@ -155,6 +155,21 @@ export const hospitalDetails: HospitalDetail[] = [
     photos: [],
   },
   {
+    id: "yamini-veterinary",
+    category: "Pharmacy",
+    subCategory: null,
+    name: "Yamini Veterinary Medical Hall",
+    specialist: "Veterinary Pharmacy - Wholesale & Retail",
+    description: "Yamini Veterinary Medical Hall\nNear Bus Stand, Sircilla",
+    normalUserOffer: "Veterinary Medicines & Tonics Available\nBasic pet supplies available",
+    vipUserOffer: "Ask in-store for VIP pricing on select items",
+    reaction: "Request Now",
+    photos: [
+      "https://ocvlqfitgajfyfgwtrar.supabase.co/storage/v1/object/public/dm-images/healthcare/yamini-veterinary/1.jpg",
+    ],
+    phone: "",
+  },
+  {
     id: "discountmithra-lab",
     category: "Lab",
     subCategory: null,

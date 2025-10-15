@@ -86,8 +86,7 @@ export const SUBSCRIPTION_PLANS: SubscriptionPlan[] = [
       'Everything in Quarterly VIP',
       '30% additional savings',
       'Free premium services',
-      '24/7 dedicated support',
-      'Lifetime feature updates'
+      '24/7 dedicated support'
     ]
   }
 ];

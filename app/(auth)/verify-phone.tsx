@@ -25,12 +25,13 @@ export default function VerifyPhoneScreen() {
       if (verifyTimerRef.current) {
         clearTimeout(verifyTimerRef.current);
       }
-      verifyTimerRef.current = setTimeout(() => {
-        // Simulate OTP verification and login
-        login("1234567890"); // You can get the actual phone number from route params
-        // Safety: reset verifying after navigation attempt in case replace is blocked
-        setTimeout(() => setIsVerifying(false), 1200);
-      }, 1000);
+        verifyTimerRef.current = setTimeout(() => {
+          // Simulate OTP verification and login
+          login("1234567890"); // You can get the actual phone number from route params
+          // Don't navigate here - let the auth state change handle navigation
+          // Safety: reset verifying after login
+          setTimeout(() => setIsVerifying(false), 1200);
+        }, 1000);
     }
     return () => {
       if (verifyTimerRef.current) {
@@ -75,7 +76,7 @@ export default function VerifyPhoneScreen() {
           clearTimeout(verifyTimerRef.current);
         }
         verifyTimerRef.current = setTimeout(() => {
-          router.replace("/(tabs)");
+          // Don't navigate here - let the auth state change handle navigation
           setTimeout(() => setIsVerifying(false), 1200);
         }, 1000);
       }

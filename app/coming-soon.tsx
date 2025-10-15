@@ -19,7 +19,7 @@ function ComingSoonScreen() {
           <SoonIllustration width="100%" height="100%" />
         </View>
         <Text style={styles.title}>We're preparing something great</Text>
-        <Text style={styles.subtitle}>This category will be available soon. Stay tuned!</Text>
+        <Text style={styles.subtitle}>This will be available soon. Stay tuned!</Text>
 
         <TouchableOpacity activeOpacity={0.9} style={styles.notifyBtn}>
           <Ionicons name="notifications" size={16} color="#fff" />

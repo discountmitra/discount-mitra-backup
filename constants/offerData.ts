@@ -248,12 +248,10 @@ export const serviceOffers: Record<string, ServiceOffers> = {
     'Restaurants': {
       normal: [
         'Dine-out: 5% off',
-        'Takeaway: 5% off',
         'Online payment: Available'
       ],
       vip: [
         'Dine-out: 10% off',
-        'Takeaway: 10% off',
         'Online payment: Available'
       ]
     }
@@ -349,12 +347,10 @@ export const categoryOffers: Record<string, CategoryOffers> = {
   'food': {
     normal: [
       'Dine-out: 5% off',
-      'Takeaway: 5% off',
       'Online payment: Available'
     ],
     vip: [
       'Dine-out: 10% off',
-      'Takeaway: 10% off',
       'Online payment: Available'
     ]
   },

@@ -27,10 +27,6 @@ export default function RestaurantCard({ restaurant, onPress }: RestaurantCardPr
       {/* Image section with like button - completely separate from navigation */}
       <View style={styles.imageContainer}>
         <Image source={require("../../assets/default.png")} style={styles.image} resizeMode="cover" />
-        <View style={styles.homeDeliveryPill}>
-          <Ionicons name="bicycle-outline" size={14} color="#111827" />
-          <Text style={styles.homeDeliveryText}>home delivery</Text>
-        </View>
         {typeof restaurant.savePercent === "number" && (
           <View style={styles.saveRibbon}>
             <Text style={styles.saveText}>Save</Text>
@@ -91,7 +87,7 @@ export default function RestaurantCard({ restaurant, onPress }: RestaurantCardPr
         <View style={styles.footerRow}>
           <Text style={styles.openLabel}>Open: <Text style={styles.openTime}>{restaurant.openTime}</Text></Text>
           <View style={styles.ctaRow}>
-            <Text style={styles.ctaText}>Tap to view menu & order</Text>
+            <Text style={styles.ctaText}>Tap to view details & dine out</Text>
             <Ionicons name="chevron-forward" size={16} color="#6b7280" />
           </View>
         </View>

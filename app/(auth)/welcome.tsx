@@ -73,7 +73,7 @@ export default function WelcomeScreen() {
       if (authState.isAuthenticated) {
         router.replace("/(tabs)");
       } else {
-        router.replace("/(auth)/login");
+        router.replace("/login");
       }
     }, 6000);
     return () => clearTimeout(timer);

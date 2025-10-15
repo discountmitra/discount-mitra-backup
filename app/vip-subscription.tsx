@@ -15,7 +15,7 @@ export default function VipSubscriptionScreen() {
   const [showCancelModal, setShowCancelModal] = useState(false);
   const [selectedPlan, setSelectedPlan] = useState<SubscriptionPlan | null>(null);
   const [isLoading, setIsLoading] = useState(false);
-  const [couponCode, setCouponCode] = useState("");
+  const [couponCode, setCouponCode] = useState("WELCOME");
   const [couponApplied, setCouponApplied] = useState(false);
   const [couponError, setCouponError] = useState<string | null>(null);
   const [couponDiscountPct, setCouponDiscountPct] = useState(0);
@@ -62,8 +62,8 @@ export default function VipSubscriptionScreen() {
 
     try {
       const normalized = couponCode.trim().toUpperCase();
-      const isValidCoupon = normalized === 'MYMLAKTR' || normalized === 'MANASRCL';
-      const pct = normalized === 'MYMLAKTR' ? 0.5 : normalized === 'MANASRCL' ? 0.3 : 0;
+      const isValidCoupon = normalized === 'WELCOME' || normalized === 'MYMLAKTR' || normalized === 'MANASRCL';
+      const pct = normalized === 'WELCOME' ? 0.2 : normalized === 'MYMLAKTR' ? 0.5 : normalized === 'MANASRCL' ? 0.3 : 0;
       const appliedPct = couponApplied ? (couponDiscountPct || pct) : 0;
       const finalPrice = Math.max(0, Math.round(selectedPlan.price * (1 - appliedPct)));
 
@@ -213,7 +213,7 @@ export default function VipSubscriptionScreen() {
                     setCouponError(null);
                     setCouponApplied(false);
                   }}
-                  placeholder="Enter code (e.g., MYMLAKTR)"
+                  placeholder="WELCOME"
                   placeholderTextColor="#9ca3af"
                   style={[styles.couponInput, (couponApplied || couponCode.trim().length > 0) && { paddingRight: 36 }]}
                   autoCapitalize="characters"
@@ -238,7 +238,11 @@ export default function VipSubscriptionScreen() {
                       setCouponDiscountPct(0);
                       return;
                     }
-                    if (code === 'MYMLAKTR') {
+                    if (code === 'WELCOME') {
+                      setCouponApplied(true);
+                      setCouponDiscountPct(0.2);
+                      setCouponError(null);
+                    } else if (code === 'MYMLAKTR') {
                       setCouponApplied(true);
                       setCouponDiscountPct(0.5);
                       setCouponError(null);
@@ -263,9 +267,7 @@ export default function VipSubscriptionScreen() {
                   <Ionicons name="checkmark-circle" size={16} color="#10b981" />
                   <Text style={styles.couponSuccessText}>Coupon applied! {Math.round((couponDiscountPct || 0) * 100)}% off on all plans.</Text>
                 </View>
-              ) : (
-                <Text style={styles.couponHint}>Tip: Use MYMLAKTR (50% off) or MANASRCL (30% off).</Text>
-              )}
+              ) : null}
             </LinearGradient>
 
             {SUBSCRIPTION_PLANS.map((plan) => {
@@ -332,9 +334,10 @@ export default function VipSubscriptionScreen() {
             <Text style={styles.modalSubtitle}>
               {(() => {
                 if (!selectedPlan) return '' as any;
-                const applied = couponCode.trim().toUpperCase() === 'MYMLAKTR';
-                const finalPrice = applied ? Math.max(0, Math.round(selectedPlan.price * 0.5)) : selectedPlan.price;
-                return `You're about to subscribe to ${selectedPlan.name} for ₹${finalPrice}${applied ? ` (50% OFF applied)` : ''}`;
+                const code = couponCode.trim().toUpperCase();
+                const pct = code === 'WELCOME' ? 0.2 : code === 'MYMLAKTR' ? 0.5 : code === 'MANASRCL' ? 0.3 : 0;
+                const finalPrice = pct ? Math.max(0, Math.round(selectedPlan.price * (1 - pct))) : selectedPlan.price;
+                return `You're about to subscribe to ${selectedPlan.name} for ₹${finalPrice}${pct ? ` (${Math.round(pct*100)}% OFF applied)` : ''}`;
               })()}
             </Text>
 

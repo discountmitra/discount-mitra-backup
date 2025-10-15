@@ -68,6 +68,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         isLoading: false,
         user: userData,
       });
+      // Navigate to tabs after successful login
       router.replace('/(tabs)');
     } catch (error) {
       console.error('Error during login:', error);
@@ -82,6 +83,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         ...prev,
         user: userData,
       }));
+      // Navigate to tabs after completing profile
       router.replace('/(tabs)');
     } catch (error) {
       console.error('Error completing profile:', error);
@@ -96,7 +98,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         isLoading: false,
         user: null,
       });
-      router.replace('/(auth)/login');
+      router.replace('/login');
     } catch (error) {
       console.error('Error during logout:', error);
     }

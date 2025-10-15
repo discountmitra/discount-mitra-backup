@@ -68,7 +68,17 @@ export default function ShoppingScreen() {
         }}
         scrollEventThrottle={16}
         renderItem={({ item }) => (
-          <TouchableOpacity activeOpacity={0.9} style={styles.card} onPress={() => router.push({ pathname: "/shopping-detail", params: { id: item.id } })}>
+          <TouchableOpacity
+            activeOpacity={0.9}
+            style={styles.card}
+            onPress={() => {
+              if (item.id === "cmr-shopping-mall") {
+                router.push("/coming-soon");
+              } else {
+                router.push({ pathname: "/shopping-detail", params: { id: item.id } });
+              }
+            }}
+          >
             <Image
               source={item.image && /^https?:\/\//.test(item.image) ? { uri: item.image } : defaultImage}
               style={styles.image}

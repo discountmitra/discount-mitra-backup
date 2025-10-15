@@ -152,7 +152,7 @@ export default function FoodScreen() {
               <View style={styles.footerRow}>
                 <Text style={styles.openLabel}>Open: <Text style={styles.openTime}>{item.openTime}</Text></Text>
                 <View style={styles.ctaRow}>
-                  <Text style={styles.ctaText}>Tap to view menu & order</Text>
+                  <Text style={styles.ctaText}>Tap to view details & dine out</Text>
                   <Ionicons name="chevron-forward" size={16} color="#6b7280" />
                 </View>
               </View>

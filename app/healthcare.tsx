@@ -103,7 +103,14 @@ export default function HealthcareScreen() {
         }}
         scrollEventThrottle={16}
         renderItem={({ item }) => (
-          <TouchableOpacity activeOpacity={0.9} style={styles.card} onPress={() => router.push({ pathname: "/hospital-detail", params: { id: item.id, image: item.image || "" } })}>
+          <TouchableOpacity
+            activeOpacity={0.9}
+            style={styles.card}
+            onPress={() => {
+              // Route all healthcare items (including Veterinary) to hospital-detail for consistent layout
+              router.push({ pathname: '/hospital-detail', params: { id: item.id, image: item.image || '' } });
+            }}
+          >
             <View style={{ position: "relative" }}>
               <Image
                 source={

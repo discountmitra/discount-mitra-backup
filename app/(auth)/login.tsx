@@ -44,11 +44,11 @@ export default function LoginScreen() {
     }
 
     // Navigate to OTP verification screen
-    router.push("/(auth)/verify-phone");
+    router.push("/verify-phone");
   };
 
   const handleRegister = () => {
-    router.push("/(auth)/complete-profile");
+    router.push("/complete-profile");
   };
 
   return (

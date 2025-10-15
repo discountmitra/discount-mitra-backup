@@ -36,11 +36,8 @@ export default function RestaurantDetailScreen() {
     });
   };
 
-  const handleDelivery = () => {
-    router.push({
-      pathname: '/coming-soon',
-      params: { restaurantId: restaurant.id }
-    });
+  const handleTakeAway = () => {
+    router.push('/coming-soon');
   };
 
   const handleCall = () => {
@@ -253,12 +250,12 @@ export default function RestaurantDetailScreen() {
             
             <TouchableOpacity 
               style={styles.serviceOption}
-              onPress={handleDelivery}
+              onPress={handleTakeAway}
             >
               <View style={styles.serviceOptionIcon}>
-                <Ionicons name="bicycle" size={24} color="#10b981" />
+                <Ionicons name="bag" size={24} color="#10b981" />
               </View>
-              <Text style={styles.serviceOptionText}>Delivery</Text>
+              <Text style={styles.serviceOptionText}>Take Away</Text>
               <View style={styles.comingSoonBadge}>
                 <Ionicons name="time" size={10} color="#fff" />
                 <Text style={styles.comingSoonText}>Coming Soon</Text>

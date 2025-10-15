@@ -9,7 +9,7 @@ export interface Category {
 
 export const categories: Category[] = [
   // Primary order
-  { id: "1", title: "Food", subtitle: "Restaurants & Takeaway", icon: "fast-food", color: "#FF6B6B" },
+  { id: "1", title: "Food", subtitle: "Restaurants & Dine Out", icon: "fast-food", color: "#FF6B6B" },
   { id: "2", title: "Healthcare", subtitle: "Hospitals & Clinics", icon: "medkit", color: "#4ECDC4" },
   { id: "4", title: "Home Services", subtitle: "Repair & Maintenance", icon: "build", color: "#FFA502" },
   { id: "8", title: "Events", subtitle: "Event Management", icon: "calendar", color: "#27AE60" },

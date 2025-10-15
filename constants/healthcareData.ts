@@ -1,4 +1,4 @@
-export type HealthcareCategoryKey = "All" | "Hospitals" | "Clinics" | "Pharmacy" | "Diagnostics" | "Dental" | "Eye" | "ENT";
+export type HealthcareCategoryKey = "All" | "Hospitals" | "Clinics" | "Pharmacy" | "Diagnostics" | "Dental" | "Eye" | "ENT" | "Veterinary";
 
 export interface HealthcareProvider {
   id: string;
@@ -20,6 +20,7 @@ export const healthcareCategories: HealthcareCategoryKey[] = [
   "Dental",
   "Eye",
   "ENT",
+  "Veterinary",
 ];
 
 export const healthcareData: HealthcareProvider[] = [
@@ -148,5 +149,19 @@ export const healthcareData: HealthcareProvider[] = [
     phone: "",
     category: "Pharmacy",
     image: "https://plus.unsplash.com/premium_photo-1682129961512-cec819b87215?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8bWVkaWNhbCUyMHN0b3JlfGVufDB8fDB8fHww",
+  },
+  {
+    id: "yamini-veterinary",
+    name: "Yamini Veterinary Medical Hall",
+    location: "Near Bus Stand, Sircilla",
+    bookingPay: 0,
+    bookingCashback: 0,
+    specialOffers: [
+      "Wholesale & Retail Pharmacy",
+      "Medicines and tonics for cows, dogs, goats, hens and more",
+    ],
+    phone: "",
+    category: "Veterinary",
+    image: "https://ocvlqfitgajfyfgwtrar.supabase.co/storage/v1/object/public/dm-images/healthcare/yamini-veterinary/1.jpg",
   },
 ];

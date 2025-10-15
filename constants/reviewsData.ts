@@ -14,7 +14,7 @@ export interface GalleryImage {
 }
 
 export const reviews: Review[] = [
-  { id: 1, name: 'NarEnder Reddy', rating: 1, comment: 'Worst taste and service', date: '16 Jul 2025' },
+  { id: 1, name: 'NarEnder Reddy', rating: 5, comment: 'Must visit place', date: '16 Jul 2025' },
   { id: 2, name: 'Sarah P', rating: 4, comment: 'Great food and ambiance', date: '15 Jul 2025' },
   { id: 3, name: 'Mike L', rating: 5, comment: 'Excellent service!', date: '14 Jul 2025' },
   { id: 4, name: 'Emma W', rating: 3, comment: 'Average food quality', date: '13 Jul 2025' },

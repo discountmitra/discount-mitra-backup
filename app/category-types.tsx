@@ -74,6 +74,7 @@ export default function CategoryTypesScreen() {
           { id: 'Dental', label: 'Dental', icon: 'sparkles', description: 'Dental care & surgery' },
           { id: 'Eye', label: 'Eye', icon: 'eye', description: 'Opticals & eye care' },
           { id: 'ENT', label: 'ENT', icon: 'ear', description: 'Ear, Nose & Throat' },
+          { id: 'Veterinary', label: 'Veterinary', icon: 'paw', description: 'Animal care & pharmacy' },
         ];
       case 'home-services':
         return [
