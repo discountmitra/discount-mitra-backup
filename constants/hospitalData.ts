@@ -42,7 +42,7 @@ export const hospitalDetails: HospitalDetail[] = [
     normalOpPrice: 300,
     vipOpPrice: 199,
     reaction: "After making the payment and booking, the user should see a unique code in the app. The booking details along with this code should be sent to us and also to the hospital",
-    photos: ["https://ocvlqfitgajfyfgwtrar.supabase.co/storage/v1/object/public/dm-images/healthcare/lulu-kidshospital/1.jpeg"],
+    photos: ["https://rwrwadrkgnbiekvlrpza.supabase.co/storage/v1/object/public/dm-images/healthcare/lulu-kidshospital/1.jpeg"],
   },
   {
     id: "life-hospital",
@@ -165,7 +165,7 @@ export const hospitalDetails: HospitalDetail[] = [
     vipUserOffer: "Ask in-store for VIP pricing on select items",
     reaction: "Request Now",
     photos: [
-      "https://ocvlqfitgajfyfgwtrar.supabase.co/storage/v1/object/public/dm-images/healthcare/yamini-veterinary/1.jpg",
+      "https://rwrwadrkgnbiekvlrpza.supabase.co/storage/v1/object/public/dm-images/healthcare/yamini-veterinary/1.jpg",
     ],
     phone: "",
   },

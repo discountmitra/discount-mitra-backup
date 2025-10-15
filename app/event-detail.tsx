@@ -24,6 +24,7 @@ import { defaultImage } from '../constants/assets';
 import { categoryOffers } from '../constants/offerData';
 import { eventData as eventServices } from '../constants/eventsData';
 import { LinearGradient } from 'expo-linear-gradient';
+import { eventsFaq as faqData } from "../constants/faqData";
 
 type UserType = 'normal' | 'vip';
 
@@ -75,20 +76,6 @@ export default function EventDetailScreen() {
   const [showPaymentPopup, setShowPaymentPopup] = useState(false);
   const [popupAnim] = useState(new Animated.Value(0));
 
-  const faqData = [
-    {
-      question: "How far in advance should I book my event?",
-      answer: "We recommend booking 2-4 weeks in advance for regular events and 6-8 weeks for wedding seasons or peak times to ensure availability."
-    },
-    {
-      question: "What happens if I need to postpone my event?",
-      answer: "Events can be rescheduled up to 7 days before the event date without extra charges. Cancellations after this period may incur fees."
-    },
-    {
-      question: "What is included in the event package?",
-      answer: "Our standard packages include venue decoration, basic lighting, sound system, and coordination. Additional services like catering and photography are available."
-    }
-  ];
 
   const eventData: EventData[] = eventServices.map(s => ({
     Category: 'Events',
@@ -253,80 +240,80 @@ export default function EventDetailScreen() {
   }), [currentEvent, eventIdStr, params.normalUserOffer, params.vipUserOffer]);
   const isBirthdayDecoration = event.name === 'Birthday Decoration' && event.category === 'Decoration';
   const birthdayGalleryImages = [
-    'https://ocvlqfitgajfyfgwtrar.supabase.co/storage/v1/object/public/dm-images/events-services/decoration/bdy/2.jpg',
-    'https://ocvlqfitgajfyfgwtrar.supabase.co/storage/v1/object/public/dm-images/events-services/decoration/bdy/3.jpg',
-    'https://ocvlqfitgajfyfgwtrar.supabase.co/storage/v1/object/public/dm-images/events-services/decoration/bdy/4.jpg',
+    'https://rwrwadrkgnbiekvlrpza.supabase.co/storage/v1/object/public/dm-images/events-services/decoration/bdy/2.jpg',
+    'https://rwrwadrkgnbiekvlrpza.supabase.co/storage/v1/object/public/dm-images/events-services/decoration/bdy/3.jpg',
+    'https://rwrwadrkgnbiekvlrpza.supabase.co/storage/v1/object/public/dm-images/events-services/decoration/bdy/4.jpg',
   ];
   const isHaldiDecoration = event.name === 'Haldi Decoration' && event.category === 'Decoration';
   const haldiGalleryImages = [
-    'https://ocvlqfitgajfyfgwtrar.supabase.co/storage/v1/object/public/dm-images/events-services/decoration/haldi/1.jpg',
-    'https://ocvlqfitgajfyfgwtrar.supabase.co/storage/v1/object/public/dm-images/events-services/decoration/haldi/2.webp',
-    'https://ocvlqfitgajfyfgwtrar.supabase.co/storage/v1/object/public/dm-images/events-services/decoration/haldi/3.webp',
+    'https://rwrwadrkgnbiekvlrpza.supabase.co/storage/v1/object/public/dm-images/events-services/decoration/haldi/1.jpg',
+    'https://rwrwadrkgnbiekvlrpza.supabase.co/storage/v1/object/public/dm-images/events-services/decoration/haldi/2.webp',
+    'https://rwrwadrkgnbiekvlrpza.supabase.co/storage/v1/object/public/dm-images/events-services/decoration/haldi/3.webp',
   ];
   const isWeddingDecoration = event.name === 'Wedding Decoration' && event.category === 'Decoration';
   const weddingGalleryImages = [
-    'https://ocvlqfitgajfyfgwtrar.supabase.co/storage/v1/object/public/dm-images/events-services/decoration/wedding/1.jpg',
-    'https://ocvlqfitgajfyfgwtrar.supabase.co/storage/v1/object/public/dm-images/events-services/decoration/wedding/2.jpg',
-    'https://ocvlqfitgajfyfgwtrar.supabase.co/storage/v1/object/public/dm-images/events-services/decoration/wedding/3.jpg',
-    'https://ocvlqfitgajfyfgwtrar.supabase.co/storage/v1/object/public/dm-images/events-services/decoration/wedding/5.jpg',
-    'https://ocvlqfitgajfyfgwtrar.supabase.co/storage/v1/object/public/dm-images/events-services/decoration/wedding/6.jpg',
+    'https://rwrwadrkgnbiekvlrpza.supabase.co/storage/v1/object/public/dm-images/events-services/decoration/wedding/1.jpg',
+    'https://rwrwadrkgnbiekvlrpza.supabase.co/storage/v1/object/public/dm-images/events-services/decoration/wedding/2.jpg',
+    'https://rwrwadrkgnbiekvlrpza.supabase.co/storage/v1/object/public/dm-images/events-services/decoration/wedding/3.jpg',
+    'https://rwrwadrkgnbiekvlrpza.supabase.co/storage/v1/object/public/dm-images/events-services/decoration/wedding/5.jpg',
+    'https://rwrwadrkgnbiekvlrpza.supabase.co/storage/v1/object/public/dm-images/events-services/decoration/wedding/6.jpg',
   ];
   const isReceptionDecoration = event.name === 'Reception Decoration' && event.category === 'Decoration';
   const receptionGalleryImages = [
-    'https://ocvlqfitgajfyfgwtrar.supabase.co/storage/v1/object/public/dm-images/events-services/decoration/wedding/8.jpg',
-    'https://ocvlqfitgajfyfgwtrar.supabase.co/storage/v1/object/public/dm-images/events-services/decoration/wedding/8.jpg',
-    'https://ocvlqfitgajfyfgwtrar.supabase.co/storage/v1/object/public/dm-images/events-services/decoration/wedding/10.jpg',
-    'https://ocvlqfitgajfyfgwtrar.supabase.co/storage/v1/object/public/dm-images/events-services/decoration/wedding/11.jpg',
+    'https://rwrwadrkgnbiekvlrpza.supabase.co/storage/v1/object/public/dm-images/events-services/decoration/wedding/8.jpg',
+    'https://rwrwadrkgnbiekvlrpza.supabase.co/storage/v1/object/public/dm-images/events-services/decoration/wedding/9.jpg',
+    'https://rwrwadrkgnbiekvlrpza.supabase.co/storage/v1/object/public/dm-images/events-services/decoration/wedding/10.jpg',
+    'https://rwrwadrkgnbiekvlrpza.supabase.co/storage/v1/object/public/dm-images/events-services/decoration/wedding/11.jpg',
   ];
   const isPremiumDecoration = event.name === 'Premium Decorations' && event.category === 'Decoration';
   const premiumGalleryImages = [
-    'https://ocvlqfitgajfyfgwtrar.supabase.co/storage/v1/object/public/dm-images/events-services/decoration/premium-decoration/1.jpg',
-    'https://ocvlqfitgajfyfgwtrar.supabase.co/storage/v1/object/public/dm-images/events-services/decoration/premium-decoration/2.jpg',
-    'https://ocvlqfitgajfyfgwtrar.supabase.co/storage/v1/object/public/dm-images/events-services/decoration/premium-decoration/3.jpg',
-    'https://ocvlqfitgajfyfgwtrar.supabase.co/storage/v1/object/public/dm-images/events-services/decoration/premium-decoration/4.jpg',
+    'https://rwrwadrkgnbiekvlrpza.supabase.co/storage/v1/object/public/dm-images/events-services/decoration/premium-decoration/1.jpg',
+    'https://rwrwadrkgnbiekvlrpza.supabase.co/storage/v1/object/public/dm-images/events-services/decoration/premium-decoration/2.jpg',
+    'https://rwrwadrkgnbiekvlrpza.supabase.co/storage/v1/object/public/dm-images/events-services/decoration/premium-decoration/3.jpg',
+    'https://rwrwadrkgnbiekvlrpza.supabase.co/storage/v1/object/public/dm-images/events-services/decoration/premium-decoration/4.jpg',
   ];
   // New non-decoration galleries
   const isTentHouse = event.name === 'Tent House Services' && event.category === 'Tent House';
   const tentHouseImages = [
-    'https://ocvlqfitgajfyfgwtrar.supabase.co/storage/v1/object/public/dm-images/events-services/tent-house/1.jpg',
-    'https://ocvlqfitgajfyfgwtrar.supabase.co/storage/v1/object/public/dm-images/events-services/tent-house/2.jpg',
-    'https://ocvlqfitgajfyfgwtrar.supabase.co/storage/v1/object/public/dm-images/events-services/tent-house/3.jpg',
-    'https://ocvlqfitgajfyfgwtrar.supabase.co/storage/v1/object/public/dm-images/events-services/tent-house/4.jpg',
+    'https://rwrwadrkgnbiekvlrpza.supabase.co/storage/v1/object/public/dm-images/events-services/tent-house/1.jpg',
+    'https://rwrwadrkgnbiekvlrpza.supabase.co/storage/v1/object/public/dm-images/events-services/tent-house/2.jpg',
+    'https://rwrwadrkgnbiekvlrpza.supabase.co/storage/v1/object/public/dm-images/events-services/tent-house/3.jpg',
+    'https://rwrwadrkgnbiekvlrpza.supabase.co/storage/v1/object/public/dm-images/events-services/tent-house/4.jpg',
   ];
   const isDJServices = event.name === 'DJ Services' && event.category === 'DJ & Lighting';
   const djServicesImages = [
-    'https://ocvlqfitgajfyfgwtrar.supabase.co/storage/v1/object/public/dm-images/events-services/dj-lighting/dj/2.jpg',
-    'https://ocvlqfitgajfyfgwtrar.supabase.co/storage/v1/object/public/dm-images/events-services/dj-lighting/dj/3.jpg',
-    'https://ocvlqfitgajfyfgwtrar.supabase.co/storage/v1/object/public/dm-images/events-services/dj-lighting/dj/4.jpg',
-    'https://ocvlqfitgajfyfgwtrar.supabase.co/storage/v1/object/public/dm-images/events-services/dj-lighting/dj/5.jpg',
+    'https://rwrwadrkgnbiekvlrpza.supabase.co/storage/v1/object/public/dm-images/events-services/dj-lighting/dj/2.jpg',
+    'https://rwrwadrkgnbiekvlrpza.supabase.co/storage/v1/object/public/dm-images/events-services/dj-lighting/dj/3.jpg',
+    'https://rwrwadrkgnbiekvlrpza.supabase.co/storage/v1/object/public/dm-images/events-services/dj-lighting/dj/4.jpg',
+    'https://rwrwadrkgnbiekvlrpza.supabase.co/storage/v1/object/public/dm-images/events-services/dj-lighting/dj/5.jpg',
   ];
   const isLightingServices = event.name === 'Lighting Services' && event.category === 'DJ & Lighting';
   const lightingServicesImages = [
-    'https://ocvlqfitgajfyfgwtrar.supabase.co/storage/v1/object/public/dm-images/events-services/dj-lighting/lighting/1.webp',
-    'https://ocvlqfitgajfyfgwtrar.supabase.co/storage/v1/object/public/dm-images/events-services/dj-lighting/lighting/3.jpg',
+    'https://rwrwadrkgnbiekvlrpza.supabase.co/storage/v1/object/public/dm-images/events-services/dj-lighting/lighting/1.webp',
+    'https://rwrwadrkgnbiekvlrpza.supabase.co/storage/v1/object/public/dm-images/events-services/dj-lighting/lighting/3.jpg',
   ];
   const isThadakalaPandiri = event.name === 'Thadakala Pandiri' && event.category === 'Thadakala Pandiri';
   const thadakalaPandiriImages = [
-    'https://ocvlqfitgajfyfgwtrar.supabase.co/storage/v1/object/public/dm-images/events-services/decoration/thadakala-pandiri/1.jpg',
-    'https://ocvlqfitgajfyfgwtrar.supabase.co/storage/v1/object/public/dm-images/events-services/decoration/thadakala-pandiri/2.jpg',
+    'https://rwrwadrkgnbiekvlrpza.supabase.co/storage/v1/object/public/dm-images/events-services/decoration/thadakala-pandiri/1.jpg',
+    'https://rwrwadrkgnbiekvlrpza.supabase.co/storage/v1/object/public/dm-images/events-services/decoration/thadakala-pandiri/2.jpg',
   ];
   const isVinayakaCatering = event.name === 'Vinayaka Catering' && event.category === 'Catering';
   const vinayakaCateringImages = [
-    'https://ocvlqfitgajfyfgwtrar.supabase.co/storage/v1/object/public/dm-images/events-services/catering/3.jpg',
-    'https://ocvlqfitgajfyfgwtrar.supabase.co/storage/v1/object/public/dm-images/events-services/catering/3.jpg',
+    'https://rwrwadrkgnbiekvlrpza.supabase.co/storage/v1/object/public/dm-images/events-services/catering/3.jpg',
+    'https://rwrwadrkgnbiekvlrpza.supabase.co/storage/v1/object/public/dm-images/events-services/catering/3.jpg',
   ];
   const isCateringStaff = event.name === 'Catering Staff Service' && event.category === 'Catering';
   const cateringStaffImages = [
-    'https://ocvlqfitgajfyfgwtrar.supabase.co/storage/v1/object/public/dm-images/events-services/catering/1.jpg',
-    'https://ocvlqfitgajfyfgwtrar.supabase.co/storage/v1/object/public/dm-images/events-services/catering/2.jpg',
-    'https://ocvlqfitgajfyfgwtrar.supabase.co/storage/v1/object/public/dm-images/events-services/catering/5.jpg',
+    'https://rwrwadrkgnbiekvlrpza.supabase.co/storage/v1/object/public/dm-images/events-services/catering/1.jpg',
+    'https://rwrwadrkgnbiekvlrpza.supabase.co/storage/v1/object/public/dm-images/events-services/catering/2.jpg',
+    'https://rwrwadrkgnbiekvlrpza.supabase.co/storage/v1/object/public/dm-images/events-services/catering/5.jpg',
   ];
   const isMehendiArt = event.name === 'Mehendi Art' && event.category === 'Mehendi Art';
   const mehendiArtImages = [
-    'https://ocvlqfitgajfyfgwtrar.supabase.co/storage/v1/object/public/dm-images/events-services/mehendi/1.jpg',
-    'https://ocvlqfitgajfyfgwtrar.supabase.co/storage/v1/object/public/dm-images/events-services/mehendi/2.jpg',
-    'https://ocvlqfitgajfyfgwtrar.supabase.co/storage/v1/object/public/dm-images/events-services/mehendi/3.jpg',
-    'https://ocvlqfitgajfyfgwtrar.supabase.co/storage/v1/object/public/dm-images/events-services/mehendi/4.jpg',
+    'https://rwrwadrkgnbiekvlrpza.supabase.co/storage/v1/object/public/dm-images/events-services/mehendi/1.jpg',
+    'https://rwrwadrkgnbiekvlrpza.supabase.co/storage/v1/object/public/dm-images/events-services/mehendi/2.jpg',
+    'https://rwrwadrkgnbiekvlrpza.supabase.co/storage/v1/object/public/dm-images/events-services/mehendi/3.jpg',
+    'https://rwrwadrkgnbiekvlrpza.supabase.co/storage/v1/object/public/dm-images/events-services/mehendi/4.jpg',
   ];
 
   const currentGalleryImages = (
@@ -737,30 +724,18 @@ export default function EventDetailScreen() {
               </TouchableOpacity>
               <Ionicons name="card" size={32} color="#3b82f6" />
               <Text style={styles.paymentPopupTitle}>Payment Required</Text>
-              <Text style={styles.paymentPopupSubtitle}>
-                Choose your payment option for booking
-              </Text>
+              <Text style={styles.paymentPopupSubtitle}>Choose your payment option for request</Text>
             </View>
 
+            {/* Unified pricing and actions (match Home Services) */}
             <View style={styles.paymentPopupContent}>
-              <View style={styles.paymentOptionCard}>
-                <View style={styles.paymentOptionHeader}>
-                  <Ionicons name="card" size={20} color="#3b82f6" />
-                  <Text style={styles.paymentOptionTitle}>Pay ₹9 & Book</Text>
+              <View style={styles.paymentPriceRow}>
+                <Text style={styles.paymentNormalPrice}>₹9</Text>
+                <View style={styles.paymentVipPriceLocked}>
+                  <Ionicons name="lock-closed" size={12} color="#10b981" />
+                  <Text style={styles.paymentVipPriceText}>VIP: Free</Text>
+                  <Text style={styles.paymentSavingsText}>Save ₹9</Text>
                 </View>
-                <Text style={styles.paymentOptionDescription}>
-                  Pay ₹9 to proceed with your booking request
-                </Text>
-              </View>
-
-              <View style={styles.paymentOptionCard}>
-                <View style={styles.paymentOptionHeader}>
-                  <Ionicons name="star" size={20} color="#f59e0b" />
-                  <Text style={styles.paymentOptionTitle}>Upgrade to VIP</Text>
-                </View>
-                <Text style={styles.paymentOptionDescription}>
-                  Get free bookings and exclusive discounts
-                </Text>
               </View>
             </View>
 
@@ -777,11 +752,10 @@ export default function EventDetailScreen() {
                 onPress={handleUpgradeToVip}
               >
                 <LinearGradient
-                  colors={['#f59e0b', '#d97706']}
+                  colors={['#fbbf24', '#f59e0b']}
                   style={styles.paymentUpgradeGradient}
                 >
-                  <Ionicons name="star" size={18} color="#ffffff" />
-                  <Text style={styles.paymentUpgradeText}>Upgrade to VIP</Text>
+                  <Text style={styles.paymentUpgradeText}>Subscribe</Text>
                 </LinearGradient>
               </TouchableOpacity>
             </View>
@@ -1391,6 +1365,12 @@ const styles = StyleSheet.create({
   paymentPopupContent: {
     marginBottom: 24,
   },
+  // extra styles to align with home services popup
+  paymentPriceRow: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginBottom: 16 },
+  paymentNormalPrice: { fontSize: 28, fontWeight: '800', color: '#111827' },
+  paymentVipPriceLocked: { flexDirection: 'row', alignItems: 'center', gap: 6, backgroundColor: '#ecfdf5', paddingHorizontal: 10, paddingVertical: 6, borderRadius: 999 },
+  paymentVipPriceText: { fontSize: 12, fontWeight: '700', color: '#10b981' },
+  paymentSavingsText: { fontSize: 12, fontWeight: '600', color: '#059669' },
   paymentOptionCard: {
     backgroundColor: '#f8fafc',
     borderRadius: 12,

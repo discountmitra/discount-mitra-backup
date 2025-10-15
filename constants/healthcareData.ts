@@ -33,7 +33,7 @@ export const healthcareData: HealthcareProvider[] = [
     specialOffers: ["Lab & IP Services – 15% Discount"],
     phone: "9876543210",
     category: "Hospitals",
-    image: "https://ocvlqfitgajfyfgwtrar.supabase.co/storage/v1/object/public/dm-images/healthcare/amrutha-kids-hospital/2.jpg",
+    image: "https://rwrwadrkgnbiekvlrpza.supabase.co/storage/v1/object/public/dm-images/healthcare/amrutha-kids-hospital/2.jpg",
   },
   {
     id: "lulu-children",
@@ -44,7 +44,7 @@ export const healthcareData: HealthcareProvider[] = [
     specialOffers: ["Lab & IP Services – 15% Discount", "Pharmacy – 10% Discount"],
     phone: "8876543210",
     category: "Hospitals",
-    image: "https://ocvlqfitgajfyfgwtrar.supabase.co/storage/v1/object/public/dm-images/healthcare/lulu-kidshospital/1.jpeg",
+    image: "https://rwrwadrkgnbiekvlrpza.supabase.co/storage/v1/object/public/dm-images/healthcare/lulu-kidshospital/1.jpeg",
   },
   {
     id: "life-hospital",
@@ -55,7 +55,7 @@ export const healthcareData: HealthcareProvider[] = [
     specialOffers: ["Lab & IP Services – 10% Discount"],
     phone: "9705021177",
     category: "Hospitals",
-    image: "https://ocvlqfitgajfyfgwtrar.supabase.co/storage/v1/object/public/dm-images/healthcare/life-hospital/1.jpeg",
+    image: "https://rwrwadrkgnbiekvlrpza.supabase.co/storage/v1/object/public/dm-images/healthcare/life-hospital/1.jpeg",
   },
   {
     id: "vasavi-general",
@@ -66,7 +66,7 @@ export const healthcareData: HealthcareProvider[] = [
     specialOffers: ["Lab & IP Services – 15% Discount", "Pharmacy – 10% Discount"],
     phone: "7876543210",
     category: "Hospitals",
-    image: "https://ocvlqfitgajfyfgwtrar.supabase.co/storage/v1/object/public/dm-images/healthcare/vasavi-general-hsptl/1.jpg",
+    image: "https://rwrwadrkgnbiekvlrpza.supabase.co/storage/v1/object/public/dm-images/healthcare/vasavi-general-hsptl/1.jpg",
   },
   {
     id: "siddivinayaka-ent",
@@ -88,7 +88,7 @@ export const healthcareData: HealthcareProvider[] = [
     specialOffers: ["Spectacles starting from just ₹699"],
     phone: "5876543210",
     category: "Eye",
-    image: "https://ocvlqfitgajfyfgwtrar.supabase.co/storage/v1/object/public/dm-images/healthcare/shivasai-opticals/1.jpeg",
+    image: "https://rwrwadrkgnbiekvlrpza.supabase.co/storage/v1/object/public/dm-images/healthcare/shivasai-opticals/1.jpeg",
   },
   {
     id: "aditya-neuro",
@@ -132,7 +132,7 @@ export const healthcareData: HealthcareProvider[] = [
     ],
     phone: "4876543210",
     category: "Dental",
-    image: "https://ocvlqfitgajfyfgwtrar.supabase.co/storage/v1/object/public/dm-images/healthcare/vihaana-dental/1.webp",
+    image: "https://rwrwadrkgnbiekvlrpza.supabase.co/storage/v1/object/public/dm-images/healthcare/vihaana-dental/1.webp",
   },
   {
     id: "sri-siddi-vinayaka-medical",
@@ -162,6 +162,6 @@ export const healthcareData: HealthcareProvider[] = [
     ],
     phone: "",
     category: "Veterinary",
-    image: "https://ocvlqfitgajfyfgwtrar.supabase.co/storage/v1/object/public/dm-images/healthcare/yamini-veterinary/1.jpg",
+    image: "https://rwrwadrkgnbiekvlrpza.supabase.co/storage/v1/object/public/dm-images/healthcare/yamini-veterinary/1.jpg",
   },
 ];

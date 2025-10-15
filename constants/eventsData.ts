@@ -43,7 +43,7 @@ export const eventData: EventService[] = [
     rating: 4.8,
     reviews: 1200,
     availability: "Available Now",
-    image: "https://ocvlqfitgajfyfgwtrar.supabase.co/storage/v1/object/public/dm-images/events-services/decoration/bdy/1.jpg",
+    image: "https://rwrwadrkgnbiekvlrpza.supabase.co/storage/v1/object/public/dm-images/events-services/decoration/bdy/1.jpg",
     normalUserOffer: "Basic decoration: ₹1,499\nStandard theme: 15% off\nPhotography: ₹2,000\nCatering: 10% off",
     vipUserOffer: "Premium decoration: 30% off\nLuxury theme: 25% off\nProfessional photography: 20% off\nPremium catering: 20% off\nFree event coordination",
   },
@@ -58,7 +58,7 @@ export const eventData: EventService[] = [
     rating: 4.7,
     reviews: 980,
     availability: "Available Now",
-    image: "https://ocvlqfitgajfyfgwtrar.supabase.co/storage/v1/object/public/dm-images/events-services/decoration/haldi/1.jpg",
+    image: "https://rwrwadrkgnbiekvlrpza.supabase.co/storage/v1/object/public/dm-images/events-services/decoration/haldi/1.jpg",
     normalUserOffer: "Haldi decoration: ₹2,999\nTraditional theme: 15% off\nPhotography: ₹2,500\nCatering: 10% off",
     vipUserOffer: "Premium haldi decoration: 30% off\nLuxury traditional theme: 25% off\nProfessional photography: 20% off\nPremium catering: 20% off\nFree event coordination",
   },
@@ -73,7 +73,7 @@ export const eventData: EventService[] = [
     rating: 4.9,
     reviews: 1500,
     availability: "Available Now",
-    image: "https://ocvlqfitgajfyfgwtrar.supabase.co/storage/v1/object/public/dm-images/events-services/decoration/wedding/4.jpg",
+    image: "https://rwrwadrkgnbiekvlrpza.supabase.co/storage/v1/object/public/dm-images/events-services/decoration/wedding/4.jpg",
   },
   {
     id: "reception-decoration",
@@ -99,7 +99,7 @@ export const eventData: EventService[] = [
     rating: 4.8,
     reviews: 1100,
     availability: "Available Now",
-    image: "https://ocvlqfitgajfyfgwtrar.supabase.co/storage/v1/object/public/dm-images/events-services/decoration/wedding/2.jpg",
+    image: "https://rwrwadrkgnbiekvlrpza.supabase.co/storage/v1/object/public/dm-images/events-services/decoration/wedding/2.jpg",
   },
   // Tent House
   {
@@ -127,7 +127,7 @@ export const eventData: EventService[] = [
     rating: 4.8,
     reviews: 1300,
     availability: "Available Now",
-    image: "https://ocvlqfitgajfyfgwtrar.supabase.co/storage/v1/object/public/dm-images/events-services/dj-lighting/dj/1.jpeg",
+    image: "https://rwrwadrkgnbiekvlrpza.supabase.co/storage/v1/object/public/dm-images/events-services/dj-lighting/dj/1.jpeg",
   },
   {
     id: "lighting-services",
@@ -140,7 +140,7 @@ export const eventData: EventService[] = [
     rating: 4.6,
     reviews: 720,
     availability: "Available Now",
-    image: "https://ocvlqfitgajfyfgwtrar.supabase.co/storage/v1/object/public/dm-images/events-services/dj-lighting/lighting/2.jpg",
+    image: "https://rwrwadrkgnbiekvlrpza.supabase.co/storage/v1/object/public/dm-images/events-services/dj-lighting/lighting/2.jpg",
   },
   // Thadakala Pandiri
   {
@@ -169,7 +169,7 @@ export const eventData: EventService[] = [
     rating: 4.8,
     reviews: 1200,
     availability: "Available Now",
-    image: "https://ocvlqfitgajfyfgwtrar.supabase.co/storage/v1/object/public/dm-images/events-services/function-halls/vasavi-kalyana-mandapam-a-c/2.webp",
+    image: "https://rwrwadrkgnbiekvlrpza.supabase.co/storage/v1/object/public/dm-images/events-services/function-halls/vasavi-kalyana-mandapam-a-c/2.webp",
   },
   {
     id: "padmashali-kalyana-mandapam",
@@ -183,7 +183,7 @@ export const eventData: EventService[] = [
     rating: 4.7,
     reviews: 980,
     availability: "Available Now",
-    image: "https://ocvlqfitgajfyfgwtrar.supabase.co/storage/v1/object/public/dm-images/events-services/function-halls/vasavi-kalyana-mandapam-a-c/1.webp",
+    image: "https://rwrwadrkgnbiekvlrpza.supabase.co/storage/v1/object/public/dm-images/events-services/function-halls/vasavi-kalyana-mandapam-a-c/1.webp",
   },
   {
     id: "sai-manikanta-gardens",
@@ -197,7 +197,7 @@ export const eventData: EventService[] = [
     rating: 4.9,
     reviews: 1500,
     availability: "Available Now",
-    image: "https://ocvlqfitgajfyfgwtrar.supabase.co/storage/v1/object/public/dm-images/events-services/function-halls/lahari-function-hall/3.webp",
+    image: "https://rwrwadrkgnbiekvlrpza.supabase.co/storage/v1/object/public/dm-images/events-services/function-halls/lahari-function-hall/3.webp",
   },
   {
     id: "lahari-grand-function-hall",
@@ -211,7 +211,7 @@ export const eventData: EventService[] = [
     rating: 4.8,
     reviews: 1100,
     availability: "Available Now",
-    image: "https://ocvlqfitgajfyfgwtrar.supabase.co/storage/v1/object/public/dm-images/events-services/function-halls/lahari-function-hall/2.webp",
+    image: "https://rwrwadrkgnbiekvlrpza.supabase.co/storage/v1/object/public/dm-images/events-services/function-halls/lahari-function-hall/2.webp",
   },
   {
     id: "k-convention-hall",
@@ -225,7 +225,7 @@ export const eventData: EventService[] = [
     rating: 4.6,
     reviews: 750,
     availability: "Available Now",
-    image: "https://ocvlqfitgajfyfgwtrar.supabase.co/storage/v1/object/public/dm-images/events-services/function-halls/k-function-hall/1.webp",
+    image: "https://rwrwadrkgnbiekvlrpza.supabase.co/storage/v1/object/public/dm-images/events-services/function-halls/k-function-hall/1.webp",
   },
   {
     id: "maanya-banquet-hall",
@@ -239,7 +239,7 @@ export const eventData: EventService[] = [
     rating: 4.7,
     reviews: 890,
     availability: "Available Now",
-    image: "https://ocvlqfitgajfyfgwtrar.supabase.co/storage/v1/object/public/dm-images/events-services/function-halls/maanya-a-c-banquet-hall/2.jpg",
+    image: "https://rwrwadrkgnbiekvlrpza.supabase.co/storage/v1/object/public/dm-images/events-services/function-halls/maanya-a-c-banquet-hall/2.jpg",
   },
   // Catering
   {

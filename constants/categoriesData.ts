@@ -19,10 +19,10 @@ export const categories: Category[] = [
   { id: "14", title: "Others", subtitle: "Custom Service Requests", icon: "add-circle", color: "#6B46C1" },
   // The rest
   { id: "3", title: "Travel", subtitle: "Hotels & Booking", icon: "airplane", color: "#45B7D1", comingSoon: true },
-  { id: "5", title: "Automobiles", subtitle: "Car & Bike Services", icon: "car-sport", color: "#3742FA", comingSoon: true },
+  // Removed Automobiles
   { id: "7", title: "Bar", subtitle: "Drinks & Nightlife", icon: "wine", color: "#8E44AD", comingSoon: true },
-  { id: "9", title: "Financial Services", subtitle: "Banking & Insurance", icon: "cash", color: "#16A085", comingSoon: true },
-  { id: "10", title: "Education", subtitle: "Schools & Coaching", icon: "school", color: "#E67E22", comingSoon: true },
+  // Removed Financial Services
+  // Removed Education
   { id: "11", title: "Electronics", subtitle: "Tech & Gadgets", icon: "phone-portrait", color: "#2C3E50", comingSoon: true },
 ];
 

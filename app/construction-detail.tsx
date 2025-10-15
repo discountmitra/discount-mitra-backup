@@ -9,6 +9,7 @@ import OfferCards from '../components/common/OfferCards';
 import { categoryOffers } from '../constants/offerData';
 import { constructionData as constructionItems } from '../constants/constructionData';
 import { defaultImage } from '../constants/assets';
+import { constructionFaq as faqData } from "../constants/faqData";
 
 type ConstructionData = {
   category: string;
@@ -43,20 +44,7 @@ export default function ConstructionDetailScreen() {
   const [showPaymentPopup, setShowPaymentPopup] = useState(false);
   const [popupAnim] = useState(new Animated.Value(0));
 
-  const faqData = [
-    {
-      question: 'How do I request a construction quote?',
-      answer: 'Enter your name, 10-digit mobile number, and any notes. Tap Request Now and our team will call you with the best quote.',
-    },
-    {
-      question: 'Do you provide on-site delivery?',
-      answer: 'Yes, we provide on-site delivery for most materials and services. Delivery charges depend on distance and order volume.',
-    },
-    {
-      question: 'Can I get brand options and price lists?',
-      answer: 'Absolutely. Share your requirement in the notes and we’ll send available brands with current pricing for your location.',
-    },
-  ];
+  
 
   const toggleFAQ = (index: number) => {
     setExpandedFAQ(expandedFAQ === index ? null : index);

@@ -17,6 +17,7 @@ import { Ionicons } from '@expo/vector-icons';
 import { useNavigation, useRouter } from 'expo-router';
 import { useVip } from '../contexts/VipContext';
 import { LinearGradient } from 'expo-linear-gradient';
+import { othersFaq as faqData } from "../constants/faqData";
 
 export default function OthersDetailScreen() {
   const navigation = useNavigation();
@@ -43,24 +44,7 @@ export default function OthersDetailScreen() {
   const [errors, setErrors] = useState<{[key: string]: string}>({});
 
 
-  const faqData = [
-    {
-      question: "How does the custom service request work?",
-      answer: "Simply describe your service needs, location, and budget. Our team will find the best providers and get back to you with quotes within 24 hours.",
-    },
-    {
-      question: "What types of services can I request?",
-      answer: "You can request any service not covered in our main categories - from home repairs to personal assistance, professional services, and more.",
-    },
-    {
-      question: "How much does it cost to make a request?",
-      answer: "Normal users pay ₹9 per request, while VIP users get unlimited free requests. You only pay for the actual service, not our assistance.",
-    },
-    {
-      question: "How quickly will I get a response?",
-      answer: "We typically respond within 24 hours with provider options and quotes. Urgent requests may get faster responses.",
-    },
-  ];
+
 
   const toggleFAQ = (index: number) => {
     setExpandedFAQ(expandedFAQ === index ? null : index);

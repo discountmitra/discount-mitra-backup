@@ -1,7 +1,8 @@
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import { useNavigation } from "expo-router";
 import { Ionicons } from "@expo/vector-icons";
-import SoonIllustration from "../assets/soon.svg";
+import { SvgUri } from "react-native-svg";
+import { soonSvgUrl } from "../constants/assets";
 
 function ComingSoonScreen() {
   const navigation = useNavigation();
@@ -16,7 +17,7 @@ function ComingSoonScreen() {
 
       <View style={styles.content}>
         <View style={styles.illustrationWrapper}>
-          <SoonIllustration width="100%" height="100%" />
+          <SvgUri uri={soonSvgUrl} width="100%" height="100%" />
         </View>
         <Text style={styles.title}>We're preparing something great</Text>
         <Text style={styles.subtitle}>This will be available soon. Stay tuned!</Text>

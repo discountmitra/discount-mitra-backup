@@ -6,6 +6,7 @@ import LikeButton from "../components/common/LikeButton";
 import OfferCards from "../components/common/OfferCards";
 import { categoryOffers } from "../constants/offerData";
 import { salonServices, SalonLocation } from "../constants/salonData";
+import { salonFaq as faqData } from "../constants/faqData";
 import { defaultImage } from "../constants/assets";
 
 type UserType = 'normal' | 'vip';
@@ -17,21 +18,7 @@ interface ServicePrice {
   discount: number;
 }
 
-const serviceCategories = {
-  haircuts: [
-    { name: "Haircut", original: 130, normal: { discounted: 110, discount: 20 }, vip: { discounted: 99, discount: 31 } },
-    { name: "Haircut + Shaving", original: 170, normal: { discounted: 150, discount: 20 }, vip: { discounted: 129, discount: 41 } },
-    { name: "Haircut + Shaving + Head Massage", original: 200, normal: { discounted: 180, discount: 20 }, vip: { discounted: 149, discount: 51 } }
-  ],
-  facial: [
-    { name: "Facial", original: 200, normal: { discounted: 180, discount: 20 }, vip: { discounted: 149, discount: 51 } },
-    { name: "De-Tan Treatment", original: 300, normal: { discounted: 270, discount: 30 }, vip: { discounted: 249, discount: 51 } },
-    { name: "Face Masks & Skin Therapy", original: 500, normal: { discounted: 450, discount: 50 }, vip: { discounted: 399, discount: 101 } }
-  ],
-  tattoo: [
-    { name: "Tattoo Starting Price", original: 499, normal: { discounted: 449, discount: 10 }, vip: { discounted: 399, discount: 20 } }
-  ]
-};
+import { serviceCategories } from "../constants/salonData";
 
 export default function SalonDetailScreen() {
   const params = useLocalSearchParams();
@@ -67,20 +54,6 @@ export default function SalonDetailScreen() {
   const [bookingCode, setBookingCode] = useState("");
   const [showStickyHeader, setShowStickyHeader] = useState(false);
 
-  const faqData = [
-    {
-      question: "How far in advance should I book an appointment?",
-      answer: "We recommend booking 2-3 days in advance for regular services and 1 week for special occasions to ensure your preferred time slot."
-    },
-    {
-      question: "What if I need to cancel or reschedule my appointment?",
-      answer: "You can cancel or reschedule up to 4 hours before your appointment time without any charges. Last-minute cancellations may incur a fee."
-    },
-    {
-      question: "What should I do to prepare for my appointment?",
-      answer: "Come with clean skin for facial services, avoid caffeine before treatments, and inform us of any allergies or skin sensitivities in advance."
-    }
-  ];
 
   const toggleService = (serviceName: string) => {
     setSelectedServices(prev => 
@@ -210,7 +183,7 @@ export default function SalonDetailScreen() {
     return days;
   };
 
-  const renderServiceCategory = (title: string, icon: string, services: any[]) => (
+  const renderServiceCategory = (title: string, icon: string, services: ReadonlyArray<any>) => (
     <View key={title} style={styles.section}>
       <View style={styles.categoryHeader}>
         <Ionicons name={icon as any} size={20} color="#111827" />

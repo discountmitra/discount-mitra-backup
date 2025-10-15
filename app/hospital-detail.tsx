@@ -20,6 +20,7 @@ import { useVip } from "../contexts/VipContext";
 import LikeButton from "../components/common/LikeButton";
 import { LinearGradient } from 'expo-linear-gradient';
 import OfferCards from "../components/common/OfferCards";
+import { hospitalFaq as faqData } from "../constants/faqData";
 
 export default function HospitalDetailScreen() {
   const params = useLocalSearchParams();
@@ -61,20 +62,7 @@ export default function HospitalDetailScreen() {
     ).start();
   }, [shimmerAnim]);
 
-  const faqData = [
-    {
-      question: "How do I book an OP appointment?",
-      answer: "Fill in your details, choose a preferred date, and tap Book OP. You'll receive a unique booking code and our team will contact you to confirm the time. Pay the OP fee at the hospital counter as per your mode (Normal/VIP).",
-    },
-    {
-      question: "What should I bring to the hospital?",
-      answer: "Carry a valid ID, previous medical reports/prescriptions, and your booking code shown on the success screen.",
-    },
-    {
-      question: "Can I reschedule my appointment?",
-      answer: "Yes. You can contact the hospital reception using the number provided, and reschedule at least 6 hours before the appointment time.",
-    },
-  ];
+
 
   const toggleFAQ = (index: number) => {
     setExpandedFAQ(expandedFAQ === index ? null : index);

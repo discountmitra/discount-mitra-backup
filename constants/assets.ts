@@ -1,21 +1,20 @@
 // Central assets index file for managing all image references
 // This makes it easy to swap images or update paths in the future
 
+// Remote asset URLs (Supabase)
+const SUPABASE_BASE = 'https://rwrwadrkgnbiekvlrpza.supabase.co/storage/v1/object/public/dm-images/assets';
+
 export const Assets = {
-  // Default images
+  // Default images (kept local as not requested to migrate)
   default: require('../assets/default.png'),
-  
-  // VIP and promotional images
-  vipBanner: require('../assets/vip-banner.png'),
   deal: require('../assets/deal.png'),
-  
-  // Illustrations
-  noData: require('../assets/no-data.svg'),
-  soon: require('../assets/soon.svg'),
-  
-  // App icons and branding
-  logo: require('../assets/logo.png'),
-  
+
+  // Remote URLs
+  vipBannerUrl: `${SUPABASE_BASE}/vip-banner.png`,
+  noDataUrl: `${SUPABASE_BASE}/no-data.svg`,
+  soonUrl: `${SUPABASE_BASE}/soon.svg`,
+  logoUrl: `${SUPABASE_BASE}/logo.png`,
+
   // Sample images (if any)
   c1: require('../assets/c1.png'),
   c2: require('../assets/c2.jpg'),
@@ -33,5 +32,11 @@ export const hasAsset = (key: string): key is AssetKey => key in Assets;
 
 // Individual exports for convenience
 export const defaultImage = Assets.default;
-export const vipBannerImage = Assets.vipBanner;
-export const logoImage = Assets.logo;
+
+// Image component friendly sources for remote PNGs
+export const vipBannerImage = { uri: Assets.vipBannerUrl } as const;
+export const logoImage = { uri: Assets.logoUrl } as const;
+
+// Expose illustration URLs for SvgUri usage
+export const noDataSvgUrl = Assets.noDataUrl;
+export const soonSvgUrl = Assets.soonUrl;

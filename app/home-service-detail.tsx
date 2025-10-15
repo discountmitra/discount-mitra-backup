@@ -8,6 +8,7 @@ import LikeButton from "../components/common/LikeButton";
 import OfferCards from "../components/common/OfferCards";
 import { categoryOffers } from "../constants/offerData";
 import { defaultImage } from "../constants/assets";
+import { homeServiceFaq as faqData } from "../constants/faqData";
 
 export default function HomeServiceDetailScreen() {
   const params = useLocalSearchParams();
@@ -47,24 +48,7 @@ export default function HomeServiceDetailScreen() {
     return offerText.split('\n').filter(line => line.trim() !== '');
   };
 
-    const faqData = [
-    {
-      question: "How quickly can a technician arrive?",
-      answer: "Our verified technicians can typically reach your location within 2-4 hours for urgent requests, or you can schedule a convenient time slot."
-    },
-    {
-      question: "What if the technician cannot fix the issue?",
-      answer: "If the problem cannot be resolved, you won't be charged for the service. We also provide free re-visits if the same issue occurs within 7 days."
-    },
-    {
-      question: "What payment methods do you accept?",
-      answer: "We accept cash, UPI, credit/debit cards, and digital wallets. Payment is required only after the service is completed to your satisfaction."
-    },
-    {
-      question: "Do you provide warranty on repairs?",
-      answer: "Yes, we offer a 30-day service warranty on all repairs and replacements. Original manufacturer warranty applies to new parts and installations."
-    }
-  ];
+
 
   const handleRequest = () => {
     const newErrors: { name?: string; phone?: string; address?: string; time?: string } = {};

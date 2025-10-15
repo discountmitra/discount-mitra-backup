@@ -71,7 +71,7 @@ export const restaurantData: Restaurant[] = [
     id: "4",
     name: "Sithaara Family Restaurant",
     category: "Food",
-    image: "https://ocvlqfitgajfyfgwtrar.supabase.co/storage/v1/object/public/dm-images/food/sitaara/1.jpg",
+    image: "https://rwrwadrkgnbiekvlrpza.supabase.co/storage/v1/object/public/dm-images/food/sitaara/1.jpg",
     specialist: ["South Indian", "North Indian", "Chinese"],
     menu: null,
     discounts: {
@@ -86,9 +86,9 @@ export const restaurantData: Restaurant[] = [
       payment: "Online Payment"
     },
     photos: [
-      "https://ocvlqfitgajfyfgwtrar.supabase.co/storage/v1/object/public/dm-images/food/sitaara/2.jpg",
-      "https://ocvlqfitgajfyfgwtrar.supabase.co/storage/v1/object/public/dm-images/food/sitaara/3.jpg",
-      "https://ocvlqfitgajfyfgwtrar.supabase.co/storage/v1/object/public/dm-images/food/sitaara/4.jpg"
+      "https://rwrwadrkgnbiekvlrpza.supabase.co/storage/v1/object/public/dm-images/food/sitaara/2.jpg",
+      "https://rwrwadrkgnbiekvlrpza.supabase.co/storage/v1/object/public/dm-images/food/sitaara/3.jpg",
+      "https://rwrwadrkgnbiekvlrpza.supabase.co/storage/v1/object/public/dm-images/food/sitaara/4.jpg"
     ],
     rating: 4.6,
     reviews: 420,
@@ -104,7 +104,7 @@ export const restaurantData: Restaurant[] = [
     id: "5",
     name: "Riyan Dhaba",
     category: "Food",
-    image: "https://ocvlqfitgajfyfgwtrar.supabase.co/storage/v1/object/public/dm-images/food/riyan/1.jpg",
+    image: "https://rwrwadrkgnbiekvlrpza.supabase.co/storage/v1/object/public/dm-images/food/riyan/1.jpg",
     specialist: ["Dhaba Style","Open kitchen 25+ tables , 100+ capacity", "Non-Veg Curry", "Tandoor"],
     menu: null,
     discounts: {
@@ -119,11 +119,11 @@ export const restaurantData: Restaurant[] = [
       payment: "Online Payment"
     },
     photos: [
-      "https://ocvlqfitgajfyfgwtrar.supabase.co/storage/v1/object/public/dm-images/food/riyan/2.jpg",
-      "https://ocvlqfitgajfyfgwtrar.supabase.co/storage/v1/object/public/dm-images/food/riyan/4.jpg",
-      "https://ocvlqfitgajfyfgwtrar.supabase.co/storage/v1/object/public/dm-images/food/riyan/3.jpg",
-      "https://ocvlqfitgajfyfgwtrar.supabase.co/storage/v1/object/public/dm-images/food/riyan/5.jpg",
-      "https://ocvlqfitgajfyfgwtrar.supabase.co/storage/v1/object/public/dm-images/food/riyan/6.jpg",
+      "https://rwrwadrkgnbiekvlrpza.supabase.co/storage/v1/object/public/dm-images/food/riyan/2.jpg",
+      "https://rwrwadrkgnbiekvlrpza.supabase.co/storage/v1/object/public/dm-images/food/riyan/4.jpg",
+      "https://rwrwadrkgnbiekvlrpza.supabase.co/storage/v1/object/public/dm-images/food/riyan/3.jpg",
+      "https://rwrwadrkgnbiekvlrpza.supabase.co/storage/v1/object/public/dm-images/food/riyan/5.jpg",
+      "https://rwrwadrkgnbiekvlrpza.supabase.co/storage/v1/object/public/dm-images/food/riyan/6.jpg",
     ],
     rating: 4.5,
     reviews: 310,

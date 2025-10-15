@@ -7,6 +7,7 @@ import { restaurantData, Restaurant } from "../constants/restaurantData";
 import LikeButton from "../components/common/LikeButton";
 import { reviews } from "../constants/reviewsData";
 import { defaultGalleryImages, galleryTabs, GalleryImage } from "../constants/galleryData";
+import { getAvatarColor } from "../constants/reviewsData";
 import { defaultImage } from "../constants/assets";
 
 export default function RestaurantDetailScreen() {
@@ -109,24 +110,7 @@ export default function RestaurantDetailScreen() {
     return { length: width, offset: width * index, index };
   };
 
-  const reviews = [
-    { id: 1, name: 'NarEnder Reddy', rating: 1, comment: 'Worst taste and service', date: '16 Jul 2025' },
-    { id: 2, name: 'Sarah P', rating: 4, comment: 'Great food and ambiance', date: '15 Jul 2025' },
-    { id: 3, name: 'Mike L', rating: 5, comment: 'Excellent service!', date: '14 Jul 2025' },
-    { id: 4, name: 'Emma W', rating: 3, comment: 'Average food quality', date: '13 Jul 2025' },
-    { id: 5, name: 'John D', rating: 5, comment: 'Amazing experience!', date: '12 Jul 2025' },
-  ];
-
-  // Generate consistent avatar colors based on name
-  const getAvatarColor = (name: string) => {
-    const colors = [
-      '#FF6B6B', '#4ECDC4', '#45B7D1', '#96CEB4', '#FFEAA7',
-      '#DDA0DD', '#98D8C8', '#F7DC6F', '#BB8FCE', '#85C1E9',
-      '#F8C471', '#82E0AA', '#F1948A', '#85C1E9', '#D7BDE2'
-    ];
-    const index = name.charCodeAt(0) % colors.length;
-    return colors[index];
-  };
+  // reviews imported at top from constants
 
   return (
     <View style={styles.container}>
@@ -253,9 +237,9 @@ export default function RestaurantDetailScreen() {
               onPress={handleTakeAway}
             >
               <View style={styles.serviceOptionIcon}>
-                <Ionicons name="bag" size={24} color="#10b981" />
+                <Ionicons name="bicycle" size={24} color="#10b981" />
               </View>
-              <Text style={styles.serviceOptionText}>Take Away</Text>
+              <Text style={styles.serviceOptionText}>Delivery</Text>
               <View style={styles.comingSoonBadge}>
                 <Ionicons name="time" size={10} color="#fff" />
                 <Text style={styles.comingSoonText}>Coming Soon</Text>

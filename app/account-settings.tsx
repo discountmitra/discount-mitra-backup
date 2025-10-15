@@ -4,62 +4,13 @@ import { Colors, FontSizes, Spacing } from "../theme";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { useRouter } from "expo-router";
 import { logoImage } from "../constants/assets";
+import { accountSettingsItems } from "../constants/settingsData";
 
 export default function AccountSettingsScreen() {
   const insets = useSafeAreaInsets();
   const router = useRouter();
 
-  const settingsItems = [
-    {
-      id: 1,
-      icon: "time-outline",
-      iconColor: "#3b82f6",
-      title: "Order History",
-      description: "View all your transactions",
-    },
-    {
-      id: 2,
-      icon: "people-outline",
-      iconColor: "#10b981",
-      title: "Referrals",
-      description: "Invite friends & earn amazing rewards",
-    },
-    {
-      id: 3,
-      icon: "notifications-outline",
-      iconColor: "#8b5cf6",
-      title: "Notifications",
-      description: "Manage your notifications",
-    },
-    {
-      id: 4,
-      icon: "language-outline",
-      iconColor: "#3b82f6",
-      title: "Language",
-      description: "Change app language",
-    },
-    {
-      id: 5,
-      icon: "star-outline",
-      iconColor: "#f59e0b",
-      title: "VIP membership",
-      description: "Upgrade to premium features",
-    },
-    {
-      id: 6,
-      icon: "help-circle-outline",
-      iconColor: "#f59e0b",
-      title: "Help Center",
-      description: "Get help and find answers",
-    },
-    {
-      id: 7,
-      icon: "settings-outline",
-      iconColor: "#6b7280",
-      title: "Settings",
-      description: "App preferences and privacy",
-    },
-  ];
+  const settingsItems = accountSettingsItems;
 
   return (
     <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>

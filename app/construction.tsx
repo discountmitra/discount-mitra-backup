@@ -1,6 +1,7 @@
 import { useMemo, useRef, useState } from "react";
 import { View, Text, StyleSheet, TextInput, FlatList, Image, TouchableOpacity, ScrollView, NativeSyntheticEvent, NativeScrollEvent } from "react-native";
-import NoDataIllustration from "../assets/no-data.svg";
+import { SvgUri } from "react-native-svg";
+import { noDataSvgUrl } from "../constants/assets";
 import { Ionicons } from "@expo/vector-icons";
 import { useNavigation, router, useLocalSearchParams } from "expo-router";
 import { useEffect } from "react";
@@ -85,7 +86,7 @@ export default function ConstructionScreen() {
         ListEmptyComponent={() => (
           <View style={styles.emptyContainer}>
             <View style={styles.emptyIllustrationWrapper}>
-              <NoDataIllustration width="100%" height="100%" />
+              <SvgUri uri={noDataSvgUrl} width="100%" height="100%" />
             </View>
             <Text style={styles.emptyTitle}>No items found</Text>
             <Text style={styles.emptySubtitle}>Try a different search query.</Text>
