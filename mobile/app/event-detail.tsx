@@ -496,14 +496,14 @@ export default function EventDetailScreen() {
         {/* Booking Form */}
         <View className="section">
           {event.category === 'Chef' && (
-            <View style={styles.section}>
+        <View style={styles.section}>
               <EventRequestForm type="chef" title="Chef Request" />
-            </View>
+          </View>
           )}
           {event.category === 'Photography' && (
             <View style={styles.section}>
               <EventRequestForm type="photography" title="Photography Request" />
-            </View>
+          </View>
           )}
           {event.category !== 'Chef' && event.category !== 'Photography' && (
             <View style={styles.section}>
@@ -511,7 +511,7 @@ export default function EventDetailScreen() {
               {/* existing booking UI retained for other categories */}
               {/* Keeping original handler and controls for non-chef/photography */}
               {/* Minimal duplication: keep as-is for other categories */}
-            </View>
+          </View>
           )}
         </View>
 
