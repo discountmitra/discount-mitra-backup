@@ -17,6 +17,7 @@ export interface SalonLocation {
   rating: number;
   reviews: number;
   image?: string;
+  phone?: string;
 }
 
 export const salonCategories: { id: 'men' | 'women' | 'unisex'; label: string; description: string }[] = [
@@ -31,6 +32,7 @@ export const salonServices: SalonLocation[] = [
     name: 'Hair Zone Makeover',
     address: 'Near Gandhi Nagar, Subash Nagar Road, Sircilla',
     category: 'men',
+    phone: '9866339443',
     rating: 4.8,
     reviews: 234,
     image: 'https://images.unsplash.com/photo-1503951914875-452162b0f3f1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtZW4lMjBoYWlyY3V0JTIwYmFyYmVyJTIwc2hvcHxlbnwxfHx8fDE3NTYyMzI0MTF8MA&ixlib=rb-4.1.0&q=80&w=1080',

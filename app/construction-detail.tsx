@@ -1,5 +1,5 @@
 import { useMemo, useRef, useState } from 'react';
-import { View, Text, StyleSheet, ScrollView, TouchableOpacity, TextInput, Image, Modal, ActivityIndicator, Animated, TouchableWithoutFeedback, Dimensions, FlatList } from 'react-native';
+import { View, Text, StyleSheet, ScrollView, TouchableOpacity, TextInput, Image, Modal, ActivityIndicator, Animated, TouchableWithoutFeedback, Dimensions, FlatList, Linking } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { useLocalSearchParams, useNavigation, useRouter } from 'expo-router';
 import { useVip } from '../contexts/VipContext';
@@ -148,6 +148,14 @@ export default function ConstructionDetailScreen() {
     setTimeout(() => { setIsLoading(false); setShowSuccessModal(true); }, 1200);
   };
 
+  const handleCall = async () => {
+    const number = (current as any).phone as string | undefined;
+    if (!number) return;
+    const url = `tel:${number}`;
+    const supported = await Linking.canOpenURL(url);
+    if (supported) Linking.openURL(url);
+  };
+
   return (
     <View style={styles.container}>
       {showStickyHeader && (
@@ -163,7 +171,7 @@ export default function ConstructionDetailScreen() {
                 <Text style={styles.stickyHeaderPrice}>{current.availability}</Text>
               </View>
             </View>
-            <TouchableOpacity style={styles.heroCallButton} onPress={() => {}}>
+            <TouchableOpacity style={styles.heroCallButton} onPress={handleCall}>
               <Ionicons name="call" size={20} color="#111827" />
             </TouchableOpacity>
           </View>
@@ -183,7 +191,7 @@ export default function ConstructionDetailScreen() {
               <Ionicons name="arrow-back" size={24} color="#fff" />
             </TouchableOpacity>
             <View style={styles.heroRightActions}>
-              <TouchableOpacity style={styles.heroCallButton} onPress={() => {}}>
+              <TouchableOpacity style={styles.heroCallButton} onPress={handleCall}>
                 <Ionicons name="call" size={20} color="#111827" />
               </TouchableOpacity>
               <LikeButton 

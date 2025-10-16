@@ -130,15 +130,11 @@ export default function HospitalDetailScreen() {
   }
 
   const handleCall = async () => {
-    const phone =
-      "tel:" + ("phone" in hospital ? (hospital as any).phone || "" : "");
-    if (!phone || phone === "tel:") {
-      return;
-    }
-    const supported = await Linking.canOpenURL(phone);
-    if (supported) {
-      Linking.openURL(phone);
-    }
+    const number = (hospital as any).phone as string | undefined;
+    if (!number) return;
+    const url = `tel:${number}`;
+    const supported = await Linking.canOpenURL(url);
+    if (supported) Linking.openURL(url);
   };
 
   const handleBook = () => {

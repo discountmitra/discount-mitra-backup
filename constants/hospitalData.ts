@@ -29,6 +29,7 @@ export const hospitalDetails: HospitalDetail[] = [
     vipOpPrice: 299,
     reaction: "After making the payment and booking, the user should see a unique code in the app. The booking details along with this code should be sent to us and also to the hospital",
     photos: [],
+    phone: "9440282662",
   },
   {
     id: "lulu-children",
@@ -43,6 +44,7 @@ export const hospitalDetails: HospitalDetail[] = [
     vipOpPrice: 199,
     reaction: "After making the payment and booking, the user should see a unique code in the app. The booking details along with this code should be sent to us and also to the hospital",
     photos: ["https://rwrwadrkgnbiekvlrpza.supabase.co/storage/v1/object/public/dm-images/healthcare/lulu-kidshospital/1.jpeg"],
+    phone: "9493969594",
   },
   {
     id: "life-hospital",
@@ -57,6 +59,7 @@ export const hospitalDetails: HospitalDetail[] = [
     vipOpPrice: 199,
     reaction: "After making the payment and booking, the user should see a unique code in the app. The booking details along with this code should be sent to us and also to the hospital",
     photos: [],
+    phone: "9705021177",
   },
   {
     id: "vasavi-general",
@@ -71,6 +74,7 @@ export const hospitalDetails: HospitalDetail[] = [
     vipOpPrice: 199,
     reaction: "After making the payment and booking, the user should see a unique code in the app. The booking details along with this code should be sent to us and also to the hospital",
     photos: [],
+    phone: "8247556370",
   },
   {
     id: "siddivinayaka-ent",
@@ -85,6 +89,7 @@ export const hospitalDetails: HospitalDetail[] = [
     vipOpPrice: 199,
     reaction: "After making the payment and booking, the user should see a unique code in the app. The booking details along with this code should be sent to us and also to the hospital",
     photos: [],
+    phone: "949278853",
   },
   {
     id: "shiva-sai-opticals",
@@ -99,6 +104,7 @@ export const hospitalDetails: HospitalDetail[] = [
     vipOpPrice: 9,
     reaction: "After making the payment and booking, the user should see a unique code in the app. The booking details along with this code should be sent to us and also to the hospital",
     photos: [],
+    phone: "9014312018",
   },
   {
     id: "aditya-neuro",
@@ -113,6 +119,7 @@ export const hospitalDetails: HospitalDetail[] = [
     vipOpPrice: 399,
     reaction: "After making the payment and booking, the user should see a unique code in the app. The booking details along with this code should be sent to us and also to the hospital",
     photos: [],
+    phone: "8247556370",
   },
   {
     id: "chandana-chest",
@@ -127,6 +134,7 @@ export const hospitalDetails: HospitalDetail[] = [
     vipOpPrice: 199,
     reaction: "After making the payment and booking, the user should see a unique code in the app. The booking details along with this code should be sent to us and also to the hospital",
     photos: [],
+    phone: "9573322735",
   },
   {
     id: "vihana-dental",
@@ -141,6 +149,7 @@ export const hospitalDetails: HospitalDetail[] = [
     vipOpPrice: 49,
     reaction: "After making the payment and booking, the user should see a unique code in the app. The booking details along with this code should be sent to us and also to the hospital",
     photos: [],
+    phone: "6300121711",
   },
   {
     id: "sri-siddi-vinayaka-medical",
@@ -153,6 +162,7 @@ export const hospitalDetails: HospitalDetail[] = [
     vipUserOffer: "23% Discount on Pharmacy (Ethical Medicines)\n10% Discount on General Items",
     reaction: "Request Now",
     photos: [],
+    phone: "949278853",
   },
   {
     id: "yamini-veterinary",
@@ -167,7 +177,7 @@ export const hospitalDetails: HospitalDetail[] = [
     photos: [
       "https://rwrwadrkgnbiekvlrpza.supabase.co/storage/v1/object/public/dm-images/healthcare/yamini-veterinary/1.jpg",
     ],
-    phone: "",
+    phone: "9618789213",
   },
   {
     id: "discountmithra-lab",

@@ -1,5 +1,5 @@
 import { useMemo, useState, useRef } from "react";
-import { View, Text, StyleSheet, TouchableOpacity, ScrollView, Image, TextInput, Modal, ActivityIndicator } from "react-native";
+import { View, Text, StyleSheet, TouchableOpacity, ScrollView, Image, TextInput, Modal, ActivityIndicator, Linking } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { useLocalSearchParams, useRouter, useNavigation } from "expo-router";
 import LikeButton from "../components/common/LikeButton";
@@ -35,6 +35,7 @@ export default function SalonDetailScreen() {
       rating: parseFloat((params.rating as string) || salonData?.rating?.toString() || "4.8"),
       reviews: parseInt((params.reviews as string) || salonData?.reviews?.toString() || "234"),
       image: typeof params.image === 'string' ? (params.image as string) : (salonData?.image || ""),
+      phone: (salonData as any)?.phone as string | undefined,
     };
   }, [params]);
 
@@ -151,6 +152,14 @@ export default function SalonDetailScreen() {
     setSelectedDate(newDate);
   };
 
+  const handleCall = async () => {
+    const number = (salon as any).phone as string | undefined;
+    if (!number) return;
+    const url = `tel:${number}`;
+    const supported = await Linking.canOpenURL(url);
+    if (supported) Linking.openURL(url);
+  };
+
   const onScroll = (event: any) => {
     const offsetY = event.nativeEvent.contentOffset.y;
     setShowStickyHeader(offsetY > 100);
@@ -231,7 +240,7 @@ export default function SalonDetailScreen() {
                 <Text style={styles.stickyHeaderPrice}>⭐ {salon.rating}</Text>
           </View>
           </View>
-            <TouchableOpacity style={styles.heroCallButton} onPress={() => {}}>
+            <TouchableOpacity style={styles.heroCallButton} onPress={handleCall}>
                 <Ionicons name="call" size={20} color="#111827" />
               </TouchableOpacity>
         </View>
@@ -260,7 +269,7 @@ export default function SalonDetailScreen() {
             </TouchableOpacity>
             
             <View style={styles.heroRightActions}>
-              <TouchableOpacity style={styles.heroCallButton} onPress={() => {}}>
+              <TouchableOpacity style={styles.heroCallButton} onPress={handleCall}>
                 <Ionicons name="call" size={20} color="#111827" />
               </TouchableOpacity>
               <LikeButton 

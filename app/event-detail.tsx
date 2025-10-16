@@ -13,6 +13,7 @@ import {
   Dimensions,
   Animated,
   TouchableWithoutFeedback,
+  Linking,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
@@ -122,6 +123,16 @@ export default function EventDetailScreen() {
     } else {
       setShowConfirmModal(true);
     }
+  };
+
+  const handleCall = async () => {
+    // Find the canonical service entry to access its phone if present
+    const service = eventServices.find(s => s.name === currentEvent.Name && s.category === currentEvent['Sub-Category']);
+    const number = (service as any)?.phone as string | undefined;
+    if (!number) return;
+    const url = `tel:${number}`;
+    const supported = await Linking.canOpenURL(url);
+    if (supported) Linking.openURL(url);
   };
 
   const handleClosePaymentPopup = () => {
@@ -353,7 +364,7 @@ export default function EventDetailScreen() {
                 <Text style={styles.stickyHeaderPrice}>Events</Text>
               </View>
             </View>
-            <TouchableOpacity style={styles.heroCallButton} onPress={() => {}}>
+            <TouchableOpacity style={styles.heroCallButton} onPress={handleCall}>
                 <Ionicons name="call" size={20} color="#111827" />
           </TouchableOpacity>
           </View>
@@ -382,7 +393,7 @@ export default function EventDetailScreen() {
             </TouchableOpacity>
             
             <View style={styles.heroRightActions}>
-              <TouchableOpacity style={styles.heroCallButton} onPress={() => {}}>
+              <TouchableOpacity style={styles.heroCallButton} onPress={handleCall}>
                 <Ionicons name="call" size={20} color="#111827" />
               </TouchableOpacity>
               <LikeButton 

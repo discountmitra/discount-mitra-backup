@@ -12,6 +12,7 @@ export interface ConstructionItem {
   image?: string;
   normalUserOffer?: string;
   vipUserOffer?: string;
+  phone?: string;
 }
 
 export const constructionCategories = [
@@ -41,6 +42,7 @@ export const constructionData: ConstructionItem[] = [
     availability: "Available Now",
     normalUserOffer: "Material supply: ₹5 off\nLabour charges: Standard rate\nBooking charges: ₹9",
     vipUserOffer: "Material supply: ₹10 off\nLabour charges: Standard rate\nBooking charges: Free",
+    phone: "8247556370",
   },
   {
     id: "birla-cement",
@@ -54,6 +56,7 @@ export const constructionData: ConstructionItem[] = [
     availability: "Available Now",
     normalUserOffer: "Material supply: ₹5 off\nLabour charges: Standard rate\nBooking charges: ₹9",
     vipUserOffer: "Material supply: ₹10 off\nLabour charges: Standard rate\nBooking charges: Free",
+    phone: "8247556370",
   },
   {
     id: "ambuja-cement",
@@ -65,6 +68,7 @@ export const constructionData: ConstructionItem[] = [
     rating: 4.7,
     reviews: 930,
     availability: "Available Now",
+    phone: "8247556370",
   },
   {
     id: "bangur-cement",
@@ -76,6 +80,7 @@ export const constructionData: ConstructionItem[] = [
     rating: 4.5,
     reviews: 640,
     availability: "Available Now",
+    phone: "8247556370",
   },
 
   // Steel
@@ -91,6 +96,7 @@ export const constructionData: ConstructionItem[] = [
     availability: "Available Now",
     normalUserOffer: "Steel: 5% off\nDelivery charges: Standard rate (market rate)\nBooking charges: ₹9",
     vipUserOffer: "Steel: 10% off\nDelivery charges: Standard rate (market rate)\nBooking charges: Free",
+    phone: "8247556370",
   },
   {
     id: "jindal-steel",
@@ -104,6 +110,7 @@ export const constructionData: ConstructionItem[] = [
     availability: "Available Now",
     normalUserOffer: "Steel: 5% off\nDelivery charges: Standard rate (market rate)\nBooking charges: ₹9",
     vipUserOffer: "Steel: 10% off\nDelivery charges: Standard rate (market rate)\nBooking charges: Free",
+    phone: "8247556370",
   },
   {
     id: "tata-steel",
@@ -117,6 +124,7 @@ export const constructionData: ConstructionItem[] = [
     availability: "Available Now",
     normalUserOffer: "Steel: 5% off\nDelivery charges: Standard rate (market rate)\nBooking charges: ₹9",
     vipUserOffer: "Steel: 10% off\nDelivery charges: Standard rate (market rate)\nBooking charges: Free",
+    phone: "8247556370",
   },
 
   // Bricks
@@ -132,6 +140,7 @@ export const constructionData: ConstructionItem[] = [
     availability: "Available Now",
     normalUserOffer: "Bricks: ₹500 off\nDelivery: Free\nBooking charges: ₹9",
     vipUserOffer: "Bricks: ₹1000 off\nDelivery: Free\nBooking charges: Free",
+    phone: "8247556370",
   },
   {
     id: "cement-bricks",
@@ -145,6 +154,7 @@ export const constructionData: ConstructionItem[] = [
     availability: "Available Now",
     normalUserOffer: "Bricks: ₹500 off\nDelivery: Free\nBooking charges: ₹9",
     vipUserOffer: "Bricks: ₹1000 off\nDelivery: Free\nBooking charges: Free",
+    phone: "8247556370",
   },
 
   // Paints
@@ -158,6 +168,7 @@ export const constructionData: ConstructionItem[] = [
     rating: 4.8,
     reviews: 1120,
     availability: "Available Now",
+    phone: "8247556370",
   },
   {
     id: "nerolac-paints",
@@ -169,6 +180,7 @@ export const constructionData: ConstructionItem[] = [
     rating: 4.7,
     reviews: 760,
     availability: "Available Now",
+    phone: "8247556370",
   },
   {
     id: "berger-paints",
@@ -180,6 +192,7 @@ export const constructionData: ConstructionItem[] = [
     rating: 4.6,
     reviews: 690,
     availability: "Available Now",
+    phone: "8247556370",
   },
 
   // RMC
@@ -193,6 +206,7 @@ export const constructionData: ConstructionItem[] = [
     rating: 4.8,
     reviews: 880,
     availability: "Available Now",
+    phone: "8247556370",
   },
 
   // Tiles & Marbles
@@ -206,6 +220,7 @@ export const constructionData: ConstructionItem[] = [
     rating: 4.6,
     reviews: 730,
     availability: "Available Now",
+    phone: "8247556370",
   },
   {
     id: "marbles",
@@ -217,6 +232,7 @@ export const constructionData: ConstructionItem[] = [
     rating: 4.6,
     reviews: 730,
     availability: "Available Now",
+    phone: "8247556370",
   },
   {
     id: "interior-design",
@@ -230,6 +246,7 @@ export const constructionData: ConstructionItem[] = [
     availability: "Available Now",
     normalUserOffer: "Free estimation\nBooking charges: ₹9",
     vipUserOffer: "Free estimation\nFree monitoring\nBooking charges: Free",
+    phone: "8247556370",
   },
 
   // Machinery
@@ -243,6 +260,7 @@ export const constructionData: ConstructionItem[] = [
     rating: 4.8,
     reviews: 820,
     availability: "Available Now",
+    phone: "8247556370",
   },
 ];
 

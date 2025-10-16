@@ -41,15 +41,12 @@ export default function RestaurantDetailScreen() {
     router.push('/coming-soon');
   };
 
-  const handleCall = () => {
-    Alert.alert(
-      'Call Restaurant',
-      `Call ${restaurant.name}?`,
-      [
-        { text: 'Cancel', style: 'cancel' },
-        { text: 'Call', onPress: () => Linking.openURL('tel:+1234567890') }
-      ]
-    );
+  const handleCall = async () => {
+    const number = (restaurant.phone || '').replace(/\s+/g, '');
+    if (!number) return;
+    const url = `tel:${number}`;
+    const supported = await Linking.canOpenURL(url);
+    if (supported) Linking.openURL(url);
   };
 
   const handleDirections = () => {

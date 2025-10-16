@@ -14,6 +14,7 @@ export interface EventService {
   image?: string;
   normalUserOffer?: string;
   vipUserOffer?: string;
+  phone?: string;
 }
 
 export const eventCategories = [
@@ -46,6 +47,7 @@ export const eventData: EventService[] = [
     image: "https://rwrwadrkgnbiekvlrpza.supabase.co/storage/v1/object/public/dm-images/events-services/decoration/bdy/1.jpg",
     normalUserOffer: "Basic decoration: ₹1,499\nStandard theme: 15% off\nPhotography: ₹2,000\nCatering: 10% off",
     vipUserOffer: "Premium decoration: 30% off\nLuxury theme: 25% off\nProfessional photography: 20% off\nPremium catering: 20% off\nFree event coordination",
+    phone: "8247556370",
   },
   {
     id: "haldi-decoration",
@@ -61,6 +63,7 @@ export const eventData: EventService[] = [
     image: "https://rwrwadrkgnbiekvlrpza.supabase.co/storage/v1/object/public/dm-images/events-services/decoration/haldi/1.jpg",
     normalUserOffer: "Haldi decoration: ₹2,999\nTraditional theme: 15% off\nPhotography: ₹2,500\nCatering: 10% off",
     vipUserOffer: "Premium haldi decoration: 30% off\nLuxury traditional theme: 25% off\nProfessional photography: 20% off\nPremium catering: 20% off\nFree event coordination",
+    phone: "8247556370",
   },
   {
     id: "wedding-decoration",
@@ -74,6 +77,7 @@ export const eventData: EventService[] = [
     reviews: 1500,
     availability: "Available Now",
     image: "https://rwrwadrkgnbiekvlrpza.supabase.co/storage/v1/object/public/dm-images/events-services/decoration/wedding/4.jpg",
+    phone: "8247556370",
   },
   {
     id: "reception-decoration",
@@ -87,6 +91,7 @@ export const eventData: EventService[] = [
     reviews: 750,
     availability: "Available Now",
     image: "https://images.unsplash.com/photo-1676734627786-a3662ff6a243?q=80&w=1171&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    phone: "8247556370",
   },
   {
     id: "premium-decorations",
@@ -100,6 +105,7 @@ export const eventData: EventService[] = [
     reviews: 1100,
     availability: "Available Now",
     image: "https://rwrwadrkgnbiekvlrpza.supabase.co/storage/v1/object/public/dm-images/events-services/decoration/wedding/2.jpg",
+    phone: "8247556370",
   },
   // Tent House
   {
@@ -114,6 +120,7 @@ export const eventData: EventService[] = [
     reviews: 890,
     availability: "Available Now",
     image: "https://images.unsplash.com/photo-1655409735952-cb5220efca54?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    phone: "8247556370",
   },
   // DJ & Lighting
   {
@@ -128,6 +135,7 @@ export const eventData: EventService[] = [
     reviews: 1300,
     availability: "Available Now",
     image: "https://rwrwadrkgnbiekvlrpza.supabase.co/storage/v1/object/public/dm-images/events-services/dj-lighting/dj/1.jpeg",
+    phone: "8247556370",
   },
   {
     id: "lighting-services",
@@ -141,6 +149,7 @@ export const eventData: EventService[] = [
     reviews: 720,
     availability: "Available Now",
     image: "https://rwrwadrkgnbiekvlrpza.supabase.co/storage/v1/object/public/dm-images/events-services/dj-lighting/lighting/2.jpg",
+    phone: "8247556370",
   },
   // Thadakala Pandiri
   {
@@ -155,6 +164,7 @@ export const eventData: EventService[] = [
     reviews: 950,
     availability: "Available Now",
     image: "https://5.imimg.com/data5/ANDROID/Default/2020/12/AK/ID/JL/31748740/product-jpeg-500x500.jpg",
+    phone: "8247556370",
   },
   // Function Halls
   {
@@ -170,6 +180,7 @@ export const eventData: EventService[] = [
     reviews: 1200,
     availability: "Available Now",
     image: "https://rwrwadrkgnbiekvlrpza.supabase.co/storage/v1/object/public/dm-images/events-services/function-halls/vasavi-kalyana-mandapam-a-c/2.webp",
+    phone: "8247556370",
   },
   {
     id: "padmashali-kalyana-mandapam",
@@ -184,6 +195,7 @@ export const eventData: EventService[] = [
     reviews: 980,
     availability: "Available Now",
     image: "https://rwrwadrkgnbiekvlrpza.supabase.co/storage/v1/object/public/dm-images/events-services/function-halls/vasavi-kalyana-mandapam-a-c/1.webp",
+    phone: "8247556370",
   },
   {
     id: "sai-manikanta-gardens",
@@ -198,6 +210,7 @@ export const eventData: EventService[] = [
     reviews: 1500,
     availability: "Available Now",
     image: "https://rwrwadrkgnbiekvlrpza.supabase.co/storage/v1/object/public/dm-images/events-services/function-halls/lahari-function-hall/3.webp",
+    phone: "8247556370",
   },
   {
     id: "lahari-grand-function-hall",
@@ -212,6 +225,7 @@ export const eventData: EventService[] = [
     reviews: 1100,
     availability: "Available Now",
     image: "https://rwrwadrkgnbiekvlrpza.supabase.co/storage/v1/object/public/dm-images/events-services/function-halls/lahari-function-hall/2.webp",
+    phone: "8247556370",
   },
   {
     id: "k-convention-hall",
@@ -226,6 +240,7 @@ export const eventData: EventService[] = [
     reviews: 750,
     availability: "Available Now",
     image: "https://rwrwadrkgnbiekvlrpza.supabase.co/storage/v1/object/public/dm-images/events-services/function-halls/k-function-hall/1.webp",
+    phone: "8247556370",
   },
   {
     id: "maanya-banquet-hall",
@@ -240,6 +255,7 @@ export const eventData: EventService[] = [
     reviews: 890,
     availability: "Available Now",
     image: "https://rwrwadrkgnbiekvlrpza.supabase.co/storage/v1/object/public/dm-images/events-services/function-halls/maanya-a-c-banquet-hall/2.jpg",
+    phone: "8247556370",
   },
   // Catering
   {
@@ -254,6 +270,7 @@ export const eventData: EventService[] = [
     reviews: 1800,
     availability: "Available Now",
     image: "https://plus.unsplash.com/premium_photo-1686239357900-febfb958f33c?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8Y2F0ZXJpbmd8ZW58MHx8MHx8fDA%3D",
+    phone: "8247556370",
   },
   {
     id: "catering-staff-service",
@@ -267,6 +284,7 @@ export const eventData: EventService[] = [
     reviews: 650,
     availability: "Available Now",
     image: "https://images.unsplash.com/photo-1518619745898-93e765966dcd?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8Y2F0ZXJpbmd8ZW58MHx8MHx8fDA%3D",
+    phone: "8247556370",
   },
   // Mehendi Art
   {
@@ -281,6 +299,7 @@ export const eventData: EventService[] = [
     reviews: 950,
     availability: "Available Now",
     image: "https://images.unsplash.com/photo-1505932794465-147d1f1b2c97?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8bWVoZW5kaXxlbnwwfHwwfHx8MA%3D%3D",
+    phone: "8247556370",
   },
   // Photography (New)
   {
@@ -295,6 +314,7 @@ export const eventData: EventService[] = [
     reviews: 540,
     availability: "Available Now",
     image: "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=800&auto=format&fit=crop&q=60",
+    phone: "8247556370",
   },
   // Chef (New)
   {
@@ -309,6 +329,7 @@ export const eventData: EventService[] = [
     reviews: 410,
     availability: "Available Now",
     image: "https://images.unsplash.com/photo-1551218808-94e220e084d2?w=800&auto=format&fit=crop&q=60",
+    phone: "8247556370",
   },
 ];
 
