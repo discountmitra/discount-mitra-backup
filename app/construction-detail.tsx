@@ -1,8 +1,7 @@
-import { useMemo, useState } from 'react';
-import { View, Text, StyleSheet, ScrollView, TouchableOpacity, TextInput, Image, Modal, ActivityIndicator, Animated, TouchableWithoutFeedback, FlatList, Dimensions } from 'react-native';
+import { useMemo, useRef, useState } from 'react';
+import { View, Text, StyleSheet, ScrollView, TouchableOpacity, TextInput, Image, Modal, ActivityIndicator, Animated, TouchableWithoutFeedback, Dimensions, FlatList } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { useLocalSearchParams, useNavigation, useRouter } from 'expo-router';
-import { SafeAreaView } from 'react-native-safe-area-context';
 import { useVip } from '../contexts/VipContext';
 import { LinearGradient } from 'expo-linear-gradient';
 import LikeButton from '../components/common/LikeButton';
@@ -11,6 +10,8 @@ import { categoryOffers } from '../constants/offerData';
 import { constructionData as constructionItems } from '../constants/constructionData';
 import { defaultImage } from '../constants/assets';
 import { constructionFaq as faqData } from "../constants/faqData";
+import { constructionInteriorDesignImages } from "../constants/galleryData";
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 type ConstructionData = {
   category: string;
@@ -44,11 +45,10 @@ export default function ConstructionDetailScreen() {
   const [expandedFAQ, setExpandedFAQ] = useState<number | null>(null);
   const [showPaymentPopup, setShowPaymentPopup] = useState(false);
   const [popupAnim] = useState(new Animated.Value(0));
-
-  // Gallery viewer state (match events)
   const [showGalleryModal, setShowGalleryModal] = useState(false);
   const [activeGalleryIndex, setActiveGalleryIndex] = useState(0);
   const [viewerData, setViewerData] = useState<{ id: number; url: string }[]>([]);
+  const viewerListRef = useRef<FlatList<any>>(null);
 
   
 
@@ -62,7 +62,7 @@ export default function ConstructionDetailScreen() {
   };
 
   // Use centralized construction items; keep slug mapping logic
-  const items: (ConstructionData & { gallery?: string[] })[] = constructionItems.map(it => ({
+  const items: ConstructionData[] = constructionItems.map(it => ({
     category: it.category,
     name: it.name,
     description: it.description,
@@ -72,7 +72,6 @@ export default function ConstructionDetailScreen() {
     reviews: it.reviews,
     availability: it.availability,
     image: it.image,
-    gallery: (it as any).gallery,
   }));
 
   // Function to convert individual offers to array format
@@ -85,6 +84,7 @@ export default function ConstructionDetailScreen() {
     const slug = (s: string) => s.toLowerCase().replace(/\s+/g, '-');
     const found = items.find(it => slug(it.name) === String(constructionId || '').toLowerCase()) || items[0];
     return {
+      id: found.name.toLowerCase().replace(/\s+/g, '-'),
       ...found,
       normalUserOffer: (params.normalUserOffer as string) || "",
       vipUserOffer: (params.vipUserOffer as string) || "",
@@ -253,22 +253,22 @@ export default function ConstructionDetailScreen() {
             />
           </View>
 
-          {/* Gallery section (match Events style) */}
-          {!!current.gallery && current.gallery.length > 0 && (
+          {/* Gallery section for Interior Design */}
+          {current.id === 'interior-design' && constructionInteriorDesignImages.length > 0 && (
             <View style={styles.section}>
               <View style={styles.galleryHeaderRow}>
                 <Text style={styles.sectionTitle}>Our Work Gallery</Text>
-                <View style={styles.galleryBadge}><Text style={styles.galleryBadgeText}>{current.gallery.length} Photos</Text></View>
+                <View style={styles.galleryBadge}><Text style={styles.galleryBadgeText}>{constructionInteriorDesignImages.length} Photos</Text></View>
               </View>
               <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.galleryRow}>
-                {current.gallery.map((uri, idx) => (
+                {constructionInteriorDesignImages.map((uri, idx) => (
                   <TouchableOpacity
                     key={`${uri}-${idx}`}
                     activeOpacity={0.9}
                     style={styles.galleryCard}
                     onPress={() => {
                       setActiveGalleryIndex(idx);
-                      setViewerData(current.gallery!.map((u, i) => ({ id: i + 1, url: u })));
+                      setViewerData(constructionInteriorDesignImages.map((u, i) => ({ id: i + 1, url: u })));
                       setShowGalleryModal(true);
                     }}
                   >
@@ -344,6 +344,15 @@ export default function ConstructionDetailScreen() {
         </View>
       </ScrollView>
 
+      <Modal visible={isLoading} transparent animationType="fade">
+        <View style={styles.modalOverlay}>
+          <View style={styles.loadingModalCard}>
+            <ActivityIndicator size="large" color="#e91e63" />
+            <Text style={styles.loadingText}>Submitting request...</Text>
+          </View>
+        </View>
+      </Modal>
+
       {/* Gallery Fullscreen Modal */}
       <Modal visible={showGalleryModal} animationType="fade" transparent={false} onRequestClose={() => setShowGalleryModal(false)}>
         <SafeAreaView style={styles.viewerContainer}>
@@ -359,16 +368,14 @@ export default function ConstructionDetailScreen() {
           </View>
 
           <FlatList
+            ref={viewerListRef}
             data={viewerData}
             keyExtractor={(item) => String(item.id)}
             horizontal
             pagingEnabled
             showsHorizontalScrollIndicator={false}
             initialScrollIndex={activeGalleryIndex}
-            getItemLayout={(_, index) => {
-              const width = Dimensions.get('window').width;
-              return { length: width, offset: width * index, index };
-            }}
+            getItemLayout={(_, index) => { const width = Dimensions.get('window').width; return { length: width, offset: width * index, index }; }}
             onMomentumScrollEnd={(e) => {
               const { width } = Dimensions.get('window');
               const index = Math.round(e.nativeEvent.contentOffset.x / width);
@@ -380,16 +387,11 @@ export default function ConstructionDetailScreen() {
               </View>
             )}
           />
-        </SafeAreaView>
-      </Modal>
 
-      <Modal visible={isLoading} transparent animationType="fade">
-        <View style={styles.modalOverlay}>
-          <View style={styles.loadingModalCard}>
-            <ActivityIndicator size="large" color="#e91e63" />
-            <Text style={styles.loadingText}>Submitting request...</Text>
+          <View style={styles.viewerCaptionWrap}>
+            <Text style={styles.viewerCaption} numberOfLines={1}>Photo</Text>
           </View>
-        </View>
+        </SafeAreaView>
       </Modal>
 
       {/* Confirmation Modal */}
@@ -557,24 +559,6 @@ const styles = StyleSheet.create({
   faqQuestion: { fontSize: 16, fontWeight: '600', color: '#111827', flex: 1, marginRight: 12 },
   faqAnswerContainer: { paddingTop: 12, paddingLeft: 4 },
   faqAnswer: { fontSize: 14, color: '#6b7280', lineHeight: 20 },
-  // Gallery styles (aligned to events)
-  galleryHeaderRow: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginBottom: 6 },
-  galleryBadge: { backgroundColor: '#f3f4f6', paddingHorizontal: 10, paddingVertical: 6, borderRadius: 999 },
-  galleryBadgeText: { fontSize: 12, fontWeight: '700', color: '#6b7280' },
-  galleryRow: { paddingVertical: 6 },
-  galleryCard: { width: 160, height: 110, borderRadius: 12, overflow: 'hidden', marginRight: 12, backgroundColor: '#e5e7eb' },
-  galleryImage: { width: '100%', height: '100%' },
-  galleryOverlay: { position: 'absolute', left: 0, right: 0, top: 0, bottom: 0, backgroundColor: 'rgba(0,0,0,0.08)' },
-  galleryCornerBadge: { position: 'absolute', right: 8, bottom: 8, backgroundColor: 'rgba(17,24,39,0.7)', paddingHorizontal: 8, paddingVertical: 6, borderRadius: 999 },
-  // Fullscreen viewer styles (mirroring events)
-  viewerContainer: { flex: 1, backgroundColor: '#000' },
-  viewerHeader: { height: 56, paddingHorizontal: 12, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' },
-  viewerBackButton: { width: 40, height: 40, borderRadius: 20, alignItems: 'center', justifyContent: 'center', backgroundColor: 'rgba(255,255,255,0.15)' },
-  viewerTitleWrap: { flexDirection: 'row', alignItems: 'center', gap: 8 },
-  viewerTitle: { color: '#fff', fontSize: 16, fontWeight: '700' },
-  viewerCounter: { color: '#9ca3af', fontSize: 12 },
-  viewerSlide: { width: Dimensions.get('window').width, height: Dimensions.get('window').height - 160, alignItems: 'center', justifyContent: 'center' },
-  viewerImage: { width: '100%', height: '100%' },
   modalOverlay: { flex: 1, backgroundColor: 'rgba(0, 0, 0, 0.4)', justifyContent: 'center', alignItems: 'center', padding: 16 },
   loadingModalCard: { backgroundColor: '#ffffff', borderRadius: 16, padding: 28, alignItems: 'center', shadowColor: '#000', shadowOffset: { width: 0, height: 4 }, shadowOpacity: 0.15, shadowRadius: 12, elevation: 8 },
   loadingText: { fontSize: 16, fontWeight: '600', color: '#111827', marginTop: 12, textAlign: 'center' },
@@ -599,6 +583,27 @@ const styles = StyleSheet.create({
   successButton: { paddingVertical: 14, borderRadius: 10, alignItems: 'center', backgroundColor: '#f97316', width: '100%' },
   successButtonText: { fontSize: 15, fontWeight: '700', color: '#ffffff' },
 
+  // Gallery styles (aligned with Events)
+  galleryHeaderRow: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginBottom: 6 },
+  galleryBadge: { backgroundColor: '#f3f4f6', paddingHorizontal: 10, paddingVertical: 6, borderRadius: 999 },
+  galleryBadgeText: { fontSize: 12, fontWeight: '700', color: '#6b7280' },
+  galleryRow: { paddingVertical: 6 },
+  galleryCard: { width: 160, height: 110, borderRadius: 12, overflow: 'hidden', marginRight: 12, backgroundColor: '#e5e7eb' },
+  galleryImage: { width: '100%', height: '100%' },
+  galleryOverlay: { ...StyleSheet.absoluteFillObject, backgroundColor: 'rgba(0,0,0,0.08)' },
+  galleryCornerBadge: { position: 'absolute', right: 8, bottom: 8, backgroundColor: 'rgba(17,24,39,0.7)', paddingHorizontal: 8, paddingVertical: 6, borderRadius: 999 },
+
+  // Viewer styles (aligned with Events)
+  viewerContainer: { flex: 1, backgroundColor: '#000' },
+  viewerHeader: { height: 56, paddingHorizontal: 12, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' },
+  viewerBackButton: { width: 40, height: 40, borderRadius: 20, alignItems: 'center', justifyContent: 'center', backgroundColor: 'rgba(255,255,255,0.15)' },
+  viewerTitleWrap: { flexDirection: 'row', alignItems: 'center', gap: 8 },
+  viewerTitle: { color: '#fff', fontSize: 16, fontWeight: '700' },
+  viewerCounter: { color: '#9ca3af', fontSize: 12 },
+  viewerSlide: { width: Dimensions.get('window').width, height: Dimensions.get('window').height - 160, alignItems: 'center', justifyContent: 'center' },
+  viewerImage: { width: '100%', height: '100%' },
+  viewerCaptionWrap: { position: 'absolute', left: 0, right: 0, bottom: 24, alignItems: 'center' },
+  viewerCaption: { color: '#e5e7eb', fontSize: 12 },
   // Payment Popup Styles
   paymentPopupOverlay: {
     position: 'absolute',

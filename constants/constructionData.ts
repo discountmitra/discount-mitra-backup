@@ -10,7 +10,6 @@ export interface ConstructionItem {
   reviews: number;
   availability: string;
   image?: string;
-  gallery?: string[];
   normalUserOffer?: string;
   vipUserOffer?: string;
 }
@@ -226,13 +225,6 @@ export const constructionData: ConstructionItem[] = [
     category: "Interior Services",
     icon: "water",
     image: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8aW50ZXJpb3IlMjBkZXNpZ258ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&q=60&w=600",
-    gallery: [
-      "https://rwrwadrkgnbiekvlrpza.supabase.co/storage/v1/object/public/dm-images/construction/interior-design/1.jpg",
-      "https://rwrwadrkgnbiekvlrpza.supabase.co/storage/v1/object/public/dm-images/construction/interior-design/2.jpg",
-      "https://rwrwadrkgnbiekvlrpza.supabase.co/storage/v1/object/public/dm-images/construction/interior-design/4.jpg",
-      "https://rwrwadrkgnbiekvlrpza.supabase.co/storage/v1/object/public/dm-images/construction/interior-design/5.jpg",
-      "https://rwrwadrkgnbiekvlrpza.supabase.co/storage/v1/object/public/dm-images/construction/interior-design/6.jpg",
-    ],
     rating: 4.7,
     reviews: 780,
     availability: "Available Now",
