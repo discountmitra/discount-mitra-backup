@@ -105,11 +105,11 @@ export default function EventsScreen() {
             style={styles.card}
             onPress={() => {
               if (item.category === 'Photography') {
-                router.push({ pathname: "/photography-request" });
+                router.push({ pathname: "/event-detail", params: { eventId: 'photography-service', image: item.image || "", normalUserOffer: item.normalUserOffer || "", vipUserOffer: item.vipUserOffer || "" } });
                 return;
               }
               if (item.category === 'Chef') {
-                router.push({ pathname: "/chef-request" });
+                router.push({ pathname: "/event-detail", params: { eventId: 'chef-service', image: item.image || "", normalUserOffer: item.normalUserOffer || "", vipUserOffer: item.vipUserOffer || "" } });
                 return;
               }
               const eventId = item.name.toLowerCase().replace(/\s+/g, '-');

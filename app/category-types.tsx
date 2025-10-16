@@ -148,11 +148,11 @@ export default function CategoryTypesScreen() {
             style={styles.typeCard}
             onPress={() => {
               if (category === 'events' && item.id === 'Photography') {
-                router.push('/photography-request');
+                router.push({ pathname: '/event-detail', params: { eventId: 'photography-service' } });
                 return;
               }
               if (category === 'events' && item.id === 'Chef') {
-                router.push('/chef-request');
+                router.push({ pathname: '/event-detail', params: { eventId: 'chef-service' } });
                 return;
               }
               router.push({ pathname: PATH_MAP[category], params: { preselect: item.id } });

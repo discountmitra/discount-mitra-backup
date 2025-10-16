@@ -39,6 +39,7 @@ export default function HospitalDetailScreen() {
     phone?: string;
     age?: string;
     date?: string;
+    pet?: string;
   }>({});
   const [showConfirmModal, setShowConfirmModal] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -69,6 +70,9 @@ export default function HospitalDetailScreen() {
   };
 
   const hospital = useMemo(() => getHospitalById(hospitalId), [hospitalId]);
+  const isPharmacy = hospital?.category === 'Pharmacy';
+  const isYaminiVeterinary = hospital?.id === 'yamini-veterinary';
+  const [petType, setPetType] = useState("");
   
   // Use hospital's first photo if no headerImage is provided
   const displayImage = headerImage || (hospital?.photos && hospital.photos.length > 0 ? hospital.photos[0] : "");
@@ -143,16 +147,17 @@ export default function HospitalDetailScreen() {
       phone?: string;
       age?: string;
       date?: string;
+      pet?: string;
     } = {};
     if (!patientName.trim()) newErrors.name = "Name is required";
     if (!/^\d{10}$/.test(patientPhone.trim()))
       newErrors.phone = "Enter valid 10-digit phone";
-    if (!/^\d{1,3}$/.test(patientAge.trim())) newErrors.age = "Enter valid age";
-    const isPharmacy = hospital.category === 'Pharmacy';
     if (!isPharmacy) {
+      if (!/^\d{1,3}$/.test(patientAge.trim())) newErrors.age = "Enter valid age";
       if (!/^\d{2}-\d{2}-\d{4}$/.test(preferredDate.trim()))
         newErrors.date = "Use DD-MM-YYYY";
     }
+    if (isYaminiVeterinary && !petType.trim()) newErrors.pet = 'Pet/Animal type is required';
     setErrors(newErrors);
     if (Object.keys(newErrors).length > 0) return;
 
@@ -401,7 +406,7 @@ export default function HospitalDetailScreen() {
             </View>
           </View>
           <View style={styles.formRow}>
-            <Text style={styles.inputLabel}>Patient Name</Text>
+            <Text style={styles.inputLabel}>{isYaminiVeterinary ? 'Owner Name' : 'Patient Name'}</Text>
             <TextInput
               value={patientName}
               onChangeText={setPatientName}
@@ -430,20 +435,35 @@ export default function HospitalDetailScreen() {
               <Text style={styles.errorText}>{errors.phone}</Text>
             ) : null}
           </View>
-          <View style={styles.formRow}>
-            <Text style={styles.inputLabel}>Age</Text>
-            <TextInput
-              value={patientAge}
-              onChangeText={setPatientAge}
-              placeholder="e.g., 28"
-              placeholderTextColor="#9ca3af"
-              keyboardType="number-pad"
-              style={styles.input}
-            />
-            {errors.age ? (
-              <Text style={styles.errorText}>{errors.age}</Text>
-            ) : null}
-          </View>
+          {!isPharmacy && (
+            <View style={styles.formRow}>
+              <Text style={styles.inputLabel}>Age</Text>
+              <TextInput
+                value={patientAge}
+                onChangeText={setPatientAge}
+                placeholder="e.g., 28"
+                placeholderTextColor="#9ca3af"
+                keyboardType="number-pad"
+                style={styles.input}
+              />
+              {errors.age ? (
+                <Text style={styles.errorText}>{errors.age}</Text>
+              ) : null}
+            </View>
+          )}
+          {isYaminiVeterinary && (
+            <View style={styles.formRow}>
+              <Text style={styles.inputLabel}>Pet / Animal Type</Text>
+              <TextInput
+                value={petType}
+                onChangeText={setPetType}
+                placeholder="e.g., Dog, Cow, Goat, Hen"
+                placeholderTextColor="#9ca3af"
+                style={styles.input}
+              />
+              {errors.pet ? <Text style={styles.errorText}>{errors.pet}</Text> : null}
+            </View>
+          )}
           {hospital.category !== 'Pharmacy' && (
             <View style={styles.formRow}>
               <Text style={styles.inputLabel}>Preferred Date</Text>
@@ -469,7 +489,7 @@ export default function HospitalDetailScreen() {
             </View>
           )}
           <View style={styles.formRow}>
-            <Text style={styles.inputLabel}>Notes (Problem/Details)</Text>
+            <Text style={styles.inputLabel}>{isPharmacy ? (isYaminiVeterinary ? 'Required Medicines / Notes' : 'Notes (Items/Details)') : 'Notes (Problem/Details)'}</Text>
             <TextInput
               value={notes}
               onChangeText={setNotes}

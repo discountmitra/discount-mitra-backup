@@ -10,9 +10,10 @@ type Props = {
   vipDiscountPercentage?: number;
   isVip?: boolean;
   onPressPay: () => void;
+  onVipUpgrade?: () => void;
 };
 
-export default function PayBillCard({ billAmount, onChangeAmount, discountPercentage, vipDiscountPercentage, isVip, onPressPay }: Props) {
+export default function PayBillCard({ billAmount, onChangeAmount, discountPercentage, vipDiscountPercentage, isVip, onPressPay, onVipUpgrade }: Props) {
   const amount = parseFloat(billAmount) || 0;
   const discount = (amount * discountPercentage) / 100;
   const finalAmount = Math.max(0, amount - discount);
@@ -84,7 +85,11 @@ export default function PayBillCard({ billAmount, onChangeAmount, discountPercen
             
             {/* VIP Discount Preview for Normal Users - Show inside bill summary */}
             {!isVip && vipDiscountPercentage && amount > 0 && (
-              <View style={styles.vipDiscountPreview}>
+              <TouchableOpacity 
+                style={styles.vipDiscountPreview}
+                onPress={onVipUpgrade}
+                activeOpacity={0.8}
+              >
                 <View style={styles.vipDiscountContent}>
                   <View style={{ flex: 1 }}>
                     <Text style={styles.vipDiscountText}>
@@ -98,8 +103,9 @@ export default function PayBillCard({ billAmount, onChangeAmount, discountPercen
                     <Ionicons name="star" size={12} color="#fbbf24" />
                     <Text style={styles.vipBadgeText}>VIP</Text>
                   </View>
+                  <Ionicons name="chevron-forward" size={16} color="rgba(255,255,255,0.6)" style={{ marginLeft: 8 }} />
                 </View>
-              </View>
+              </TouchableOpacity>
             )}
           </View>
         </View>

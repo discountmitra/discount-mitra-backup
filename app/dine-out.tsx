@@ -83,6 +83,7 @@ export default function DineOutScreen() {
             vipDiscountPercentage={vipDiscountPercentage}
             isVip={isVip}
             onPressPay={handlePayment}
+            onVipUpgrade={() => router.push('/vip-subscription')}
           />
         </View>
 

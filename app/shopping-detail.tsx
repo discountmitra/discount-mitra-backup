@@ -59,7 +59,7 @@ export default function ShoppingDetailScreen() {
   const params = useLocalSearchParams();
   const router = useRouter();
   const navigation = useNavigation();
-  const { userMode } = useVip();
+  const { userMode, isVip } = useVip();
   const [isLoading, setIsLoading] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
   const [showConfirm, setShowConfirm] = useState(false);
@@ -98,6 +98,7 @@ export default function ShoppingDetailScreen() {
     return userMode === 'vip' ? storeDiscount.vip : storeDiscount.normal;
   };
   const discountPercentage = getDiscountPercentage(item?.description ?? '', item?.name ?? '', userMode);
+  const vipDiscountPercentage = getDiscountPercentage(item?.description ?? '', item?.name ?? '', 'vip');
   const billNum = parseFloat(billAmount) || 0;
   const discountValue = (billNum * discountPercentage) / 100;
   const finalAmount = Math.max(0, billNum - discountValue);
@@ -197,10 +198,13 @@ export default function ShoppingDetailScreen() {
               billAmount={billAmount}
               onChangeAmount={setBillAmount}
               discountPercentage={discountPercentage}
+              vipDiscountPercentage={vipDiscountPercentage}
+              isVip={isVip}
               onPressPay={() => {
                 if (!billAmount || parseFloat(billAmount) <= 0) { Alert.alert('Enter amount', 'Please enter a valid bill amount'); return; }
                 setShowConfirm(true);
               }}
+              onVipUpgrade={() => router.push('/vip-subscription')}
             />
           </View>
         </View>
